@@ -23,7 +23,7 @@ public class MainApp {
                     }
 
                     //create response
-                    int count = new Random().nextInt(5);
+                    int count = new Random().nextInt(5) + 1;
                     FoodsResponse foodsResponse = new FoodsResponse();
                     for (int i = 0; i < count; i++)
                         foodsResponse.getFoods().add(new Food("菜品名", 48));

@@ -69,8 +69,8 @@ public class FoodsResponse extends Response {
 
             if (foods == null) {
                 foods = new LinkedList<>();
-                foods.add(new Food(record));
             }
+            foods.add(new Food(record));
 
         }
 
