@@ -1,28 +1,25 @@
-package modules;
+package modules.response;
 
+import modules.Food;
+import modules.Response;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
-import utils.avro.AvroUnit;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Foods extends AvroUnit {
-    //food list schema
-    public static Schema FOODS_SCHEMA;
-
+public class FoodsResponse extends Response {
     //food array schema
     private static Schema FOOD_ARRAY_SCHEMA;
 
     static {
         try {
             //load schema
-            FOODS_SCHEMA = new Schema.Parser().parse(Foods.class.getClassLoader().getResourceAsStream("schemas/Foods.avsc"));
-            FOOD_ARRAY_SCHEMA = new Schema.Parser().parse(Foods.class.getClassLoader().getResourceAsStream("schemas/FoodArray.avsc"));
+            FOOD_ARRAY_SCHEMA = new Schema.Parser().parse(FoodsResponse.class.getClassLoader().getResourceAsStream("schemas/FoodArray.avsc"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,11 +27,13 @@ public class Foods extends AvroUnit {
 
     private List<Food> foods;
 
-    public Foods(List<Food> foods) {
+    public FoodsResponse(List<Food> foods) {
+        super("FOODSRESPONSE");
         this.foods = foods;
     }
 
-    public Foods(Food... foods) {
+    public FoodsResponse(Food... foods) {
+        super("FOODSRESPONSE");
         this.foods = new LinkedList<>();
 
         this.foods.addAll(Arrays.asList(foods));
@@ -45,13 +44,26 @@ public class Foods extends AvroUnit {
         return foods;
     }
 
-    public Foods(GenericRecord record) {
+    @Override
+    protected void registerSchema() {
+
+        registerSchema(this.getClass(), "schemas/response/FoodsResponse.avsc");
+
+    }
+
+    public FoodsResponse(GenericRecord record) {
         super(record);
     }
 
+
     @Override
     public void deserialize(GenericRecord arrayRecord) {
+
+
         GenericArray<GenericRecord> array = (GenericArray<GenericRecord>) arrayRecord.get("foods");
+
+        //get enum
+        this.symbol = (GenericData.EnumSymbol) arrayRecord.get("type");
 
         for (GenericRecord record : array) {
 
@@ -64,17 +76,25 @@ public class Foods extends AvroUnit {
 
     }
 
+
+
     @Override
     public GenericRecord serialize() {
-        GenericRecord foodsRecord = new GenericData.Record(FOODS_SCHEMA);
+        GenericRecord foodsRecord = new GenericData.Record(getSchema());
 
-        GenericArray<GenericRecord> array = new GenericData.Array<>(1, FOOD_ARRAY_SCHEMA);
+        //put enum
+        foodsRecord.put("type", this.symbol);
+
+        GenericArray<GenericRecord> array = new GenericData.Array<>(foods.size(), FOOD_ARRAY_SCHEMA);
 
         for (Food food : foods) {
             array.add(food.serialize());
         }
 
+        //put food array
         foodsRecord.put("foods", array);
+
+
 
         return foodsRecord;
     }

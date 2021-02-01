@@ -1,0 +1,5 @@
+{
+  "type": "enum",
+  "name": "requestValue",
+  "symbols": ["FOODSREQUEST", "OTHERS"]
+}

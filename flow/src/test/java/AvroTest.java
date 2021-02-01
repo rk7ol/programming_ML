@@ -1,27 +1,36 @@
 import modules.Food;
-import modules.Foods;
-import org.apache.avro.generic.GenericRecord;
+import modules.Message;
+import modules.response.FoodsResponse;
 import utils.kafka.MessageReceiver;
 import utils.kafka.MessageSender;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 public class AvroTest {
 
-    public static String FOODS_TOPIC = "Foods";
+    public static void Fun(Object response){
+
+        System.out.println(response);
+
+    }
 
 
     public static void main(String[] args) {
 
         Food food = new Food("菜品名", 66.51);
-        Foods foods = new Foods(food);
+        FoodsResponse foods = new FoodsResponse(food);
 
         /*
             sender and receiver
          */
+//        Sender producer = new Sender("dodlee.cn:9092");
+//        Receiver consumer = new Receiver("dodlee.cn:9092", Message.getSchemaByClass(FoodsResponse.class), Message.getTopicByClass(FoodsResponse.class));
+
         MessageSender producer = new MessageSender("dodlee.cn:9092");
-        MessageReceiver consumer = new MessageReceiver("dodlee.cn:9092", Foods.FOODS_SCHEMA, FOODS_TOPIC);
+
+        MessageReceiver consumer = new MessageReceiver("dodlee.cn:9092", FoodsResponse.class);
 
 
         //send and receive process
@@ -33,16 +42,23 @@ public class AvroTest {
                 e.printStackTrace();
             }
 
-            producer.produce(foods, Foods.FOODS_SCHEMA, FOODS_TOPIC);
+            producer.produce(foods);
 
             //add new food
             foods.getFoods().add(new Food("菜品名", new Random().nextInt(32)));
 
-            List<GenericRecord> records = consumer.receive();
+            List<? extends Message> records = consumer.receiveMessage();
             if (records.size() != 0) {
-                records.forEach(System.out::println);
+                records.forEach(new Consumer<Message>() {
+                    @Override
+                    public void accept(Message message) {
+                        System.out.println(message.getTopic());
+                    }
+                });
             }
         }
+
+
 
     }
 

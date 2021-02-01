@@ -1,0 +1,20 @@
+{
+  "name": "FoodArray",
+  "type": "array",
+  "items": [
+    {
+      "name": "food",
+      "type": "record",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "price",
+          "type": "double"
+        }
+      ]
+    }
+  ]
+}

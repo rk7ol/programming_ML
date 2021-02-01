@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "name": "FoodsList",
+  "fields": [
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "responseValue",
+        "symbols": ["FOODSRESPONSE", "OTHERS"]
+      }
+    },
+    {
+      "name": "foods",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "food",
+            "type": "record",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "name": "price",
+                "type": "double"
+              }
+            ]
+          }
+        ]
+      }
+
+    }
+  ]
+}

@@ -1,27 +1,10 @@
 package modules;
 
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import utils.avro.AvroUnit;
 
-import java.io.IOException;
-
 public class Food extends AvroUnit {
-
-    //food schema
-    public static Schema FOOD_SCHEMA;
-
-    static {
-        try {
-            //load schema
-            FOOD_SCHEMA = new Schema.Parser().parse(Food.class.getClassLoader().getResourceAsStream("schemas/Food.avsc"));
-
-        } catch ( IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     private String name;
 
@@ -44,10 +27,16 @@ public class Food extends AvroUnit {
 
     @Override
     public GenericRecord serialize() {
-        GenericRecord record = new GenericData.Record(FOOD_SCHEMA);
+        GenericRecord record = new GenericData.Record(getSchema());
         record.put("name", name);
         record.put("price", price);
         return record;
+    }
+
+    @Override
+    protected void registerSchema() {
+        registerSchema(this.getClass(), "schemas/Food.avsc");
+
     }
 
     @Override

@@ -1,75 +1,20 @@
 package utils.kafka;
 
-import org.apache.avro.Schema;
+import modules.Message;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.serialization.ByteArrayDeserializer;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import utils.avro.AvroDeserializer;
+import utils.avro.AvroUnit;
 
-import java.time.Duration;
-import java.util.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class MessageReceiver {
-    private final Schema schema;
-    private KafkaConsumer<String, byte[]> consumer;
-    private AvroDeserializer deserializer;
-
-    private static boolean isRunning = true;
-
-
-    public MessageReceiver(String brokerAddress, Schema schema, String... topics) {
-
-        if (topics.length == 0)
-            throw new IllegalStateException("topic number suppose more than 0");
-
-        this.schema = schema;
-
-        deserializer = new AvroDeserializer();
-
-
-        Properties props = new Properties();
-        props.setProperty("bootstrap.servers", brokerAddress);
-        props.setProperty("group.id", "1");
-        props.setProperty("enable.auto.commit", "false");
-        props.setProperty("auto.commit.interval.ms", "100");
-        consumer = new KafkaConsumer<>(props, new StringDeserializer(), new ByteArrayDeserializer());
-
-        consumer.subscribe(Arrays.asList(topics));
-
+public class MessageReceiver extends Receiver {
+    public MessageReceiver(String brokerAddress, Class<? extends Message> type) {
+        super(brokerAddress, AvroUnit.getSchemaByClass(type), Message.getTopicByClass(type));
     }
 
+    public List<? extends Message> receiveMessage() {
+        List<GenericRecord> records = super.receive();
 
-    public List<GenericRecord> receive() {
-
-
-        List<GenericRecord> receiveList = new LinkedList<>();
-        ConsumerRecords<String, byte[]> records = consumer.poll(Duration.ofMillis(100));
-
-
-
-        for (ConsumerRecord<String, byte[]> record : records) {
-            //decode
-            receiveList.addAll(deserializer.deserialize(decode(record.value()), schema));
-
-            consumer.commitAsync();
-        }
-
-        return receiveList;
+        return records.stream().map(Message::parseFromRecord).collect(Collectors.toList());
     }
-
-    private byte[] decode(byte[] bytes) {
-
-        return Base64.getMimeDecoder().decode(bytes);
-    }
-
-
-    public void close(){
-        consumer.close();
-    }
-
-
-
 }

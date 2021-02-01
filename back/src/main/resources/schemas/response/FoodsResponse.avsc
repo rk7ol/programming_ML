@@ -1,12 +1,15 @@
-
-
-
-
 {
-
   "type": "record",
   "name": "FoodsList",
   "fields": [
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "responseValue",
+        "symbols": ["FOODSRESPONSE", "OTHERS"]
+      }
+    },
     {
       "name": "foods",
       "type": {

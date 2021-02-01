@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "FoodsList",
+  "fields": [
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "requestValue",
+        "symbols": ["FOODSREQUEST", "OTHERS"]
+      }
+    },
+    {
+      "name": "id",
+      "type": "string"
+    }
+  ]
+}
