@@ -1,6 +1,7 @@
 import modules.Food;
 import modules.Message;
 import modules.response.FoodsResponse;
+import modules.response.RegisterFoodResponse;
 import utils.kafka.MessageReceiver;
 import utils.kafka.MessageSender;
 
@@ -19,15 +20,6 @@ public class AvroTest {
 
     public static void main(String[] args) {
 
-        Food food = new Food("菜品名", 66.51);
-        FoodsResponse foods = new FoodsResponse(food);
-
-        /*
-            sender and receiver
-         */
-//        Sender producer = new Sender("dodlee.cn:9092");
-//        Receiver consumer = new Receiver("dodlee.cn:9092", Message.getSchemaByClass(FoodsResponse.class), Message.getTopicByClass(FoodsResponse.class));
-
         MessageSender producer = new MessageSender("dodlee.cn:9092");
 
         MessageReceiver consumer = new MessageReceiver("dodlee.cn:9092", FoodsResponse.class);
@@ -42,17 +34,16 @@ public class AvroTest {
                 e.printStackTrace();
             }
 
-            producer.produce(foods);
+            producer.produce(new RegisterFoodResponse(1));
 
-            //add new food
-            foods.getFoods().add(new Food("菜品名", new Random().nextInt(32)));
+
 
             List<? extends Message> records = consumer.receiveMessage();
             if (records.size() != 0) {
                 records.forEach(new Consumer<Message>() {
                     @Override
                     public void accept(Message message) {
-                        System.out.println(message.getTopic());
+                        System.out.println(message);
                     }
                 });
             }

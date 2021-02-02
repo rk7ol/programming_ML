@@ -1,7 +1,9 @@
 package modules;
 
 import modules.request.FoodsRequest;
+import modules.request.RegisterFoodRequest;
 import modules.response.FoodsResponse;
+import modules.response.RegisterFoodResponse;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import utils.avro.AvroUnit;
@@ -48,6 +50,14 @@ public abstract class Message extends AvroUnit {
 
             case "FOODSRESPONSE":{
                 return new FoodsResponse(record);
+            }
+
+            case "REGISTERFOODREQUEST":{
+                return new RegisterFoodRequest(record);
+            }
+
+            case "REGISTERFOODRESPONSE":{
+                return new RegisterFoodResponse(record);
             }
 
             default:

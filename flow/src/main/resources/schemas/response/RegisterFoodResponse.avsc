@@ -1,0 +1,21 @@
+{
+  "type": "record",
+  "name": "RegisterFoodResponse",
+  "fields": [
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "responseValue",
+        "symbols": [
+          "FOODSRESPONSE",
+          "REGISTERFOODRESPONSE"
+        ]
+      }
+    },
+    {
+      "name": "flag",
+      "type": "int"
+    }
+  ]
+}

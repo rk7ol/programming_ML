@@ -9,7 +9,7 @@ public class MainPageController {
     private Button buttonExample;
 
     @FXML
-    private void buttonExampleClickEvent(){
+    private void buttonExampleClickEvent() {
         buttonExample.setText("clicked");
         System.out.println("Hello");
     }

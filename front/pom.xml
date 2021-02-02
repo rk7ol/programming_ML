@@ -10,6 +10,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>../flow/src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
     <artifactId>front</artifactId>
     <dependencies>
         <dependency>

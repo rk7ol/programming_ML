@@ -1,5 +1,8 @@
 {
   "type": "enum",
   "name": "responseValue",
-  "symbols": ["FOODSRESPONSE", "OTHERS"]
+  "symbols": [
+    "FOODSRESPONSE",
+    "REGISTERFOODRESPONSE"
+  ]
 }
