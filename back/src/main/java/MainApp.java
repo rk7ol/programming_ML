@@ -1,7 +1,9 @@
 import flow.MessageManager;
 import handlers.FoodsRequestHandler;
+import handlers.RegisterFoodRequestHandler;
 import modules.Request;
 import modules.request.FoodsRequest;
+import modules.request.RegisterFoodRequest;
 
 public class MainApp {
 
@@ -24,7 +26,9 @@ public class MainApp {
             }
         }).start();
 
-        messageManager.addHandler(FoodsRequest.class, new FoodsRequestHandler());
+        //messageManager.addHandler(FoodsRequest.class, new FoodsRequestHandler());
+
+        messageManager.addHandler(RegisterFoodRequest.class,new RegisterFoodRequestHandler());
 
         messageManager.start();
 
