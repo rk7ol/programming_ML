@@ -1,4 +1,5 @@
-package controllers;
+package handlers;
+
 
 public class RegisterFoodResponseHandler {
 }
