@@ -6,6 +6,7 @@ import utils.kafka.MessageReceiver;
 import utils.kafka.MessageSender;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,6 +18,7 @@ public class MessageManager<T extends Message> {
 
     protected MessageSender sender;
     protected ArrayList<MessageReceiver> receivers;
+    protected ArrayList<Class<? extends Message>> types;
 
     private AtomicBoolean isRunning = new AtomicBoolean(true);
 
@@ -59,31 +61,41 @@ public class MessageManager<T extends Message> {
 
         sender = new MessageSender("dodlee.cn:9092");
         receivers = new ArrayList<>(types.length);
+        this.types = new ArrayList<>(types.length);
+
 
         for (Class<? extends T> type : types) {
-            receivers.add(new MessageReceiver("dodlee.cn:9092", type));
+            addNewReceiver(type);
         }
+
+        this.types.addAll(Arrays.asList(types));
     }
 
 
     public void start() {
 
+        //send start
         new Thread(sendMessageTask).start();
 
+        //receive start
         for (MessageReceiver receiver : receivers) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (isRunning.get()) {
-                        receiveBuffer.addAll(receiver.receiveMessage());
-                    }
-                }
-            }).start();
+            receiverStart(receiver);
         }
 
-
+        //handle start
         new Thread(handleMessageTask).start();
 
+    }
+
+    private void receiverStart(MessageReceiver receiver) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (isRunning.get()) {
+                    receiveBuffer.addAll(receiver.receiveMessage());
+                }
+            }
+        }).start();
     }
 
     public void stop() {
@@ -100,12 +112,23 @@ public class MessageManager<T extends Message> {
 
 
     /**
-     *
-     * @param type type to handle
+     * @param type    type to handle
      * @param handler
      */
     public void addHandler(Class<? extends T> type, MessageHandler<? extends T> handler) {
+
+        if (!types.contains(type)) {
+            types.add(type);
+
+            //add new receiver
+            addNewReceiver(type);
+        }
+
         HandlerMap.put(type, handler);
+    }
+
+    private void addNewReceiver(Class<? extends T> type) {
+        receivers.add(new MessageReceiver("dodlee.cn:9092", type));
     }
 
 
