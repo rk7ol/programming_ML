@@ -16,7 +16,7 @@ public class RegisterFoodRequestHandler extends MessageHandler<RegisterFoodReque
         int flag = 0;
         flag = DBRegisterFood(message);//数据库写入
         MessageManager.sendMessage(new RegisterFoodResponse(flag));
-        return false;
+        return true;
     }
 }
 
