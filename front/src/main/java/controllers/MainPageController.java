@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class MainPageController<Combobox> {
 
@@ -19,16 +20,25 @@ public class MainPageController<Combobox> {
 
 
     @FXML
-    private void button0ClickEvent(){
+  private TextField textfield1;
+
+
+    @FXML
+    private void button0ClickEvent() {
     }
 
     @FXML
-    private void button1ClickEvent(){}
+    private void button1ClickEvent() {
+    }
+
 
     @FXML
-    private void buttonAddClickEvent() {
-        buttonAdd.setText("clicked");
-        System.out.println("Hello");
+    private void eventAdd() {
+
+    }
+
+    @FXML
+    private void addaction() {
     }
 
 }
