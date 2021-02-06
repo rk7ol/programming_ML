@@ -4,6 +4,7 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import send.send;
 
 
 
@@ -65,7 +66,7 @@ public class MainPageController<Combobox, string> {
         addaction2();
         addaction3();
         System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
-        sendRegisterFoodRequest("1",textfield1.getText(),textfield2.getText(),textfield3.getText());
+        send.sendRegisterFoodRequest("1",textfield1.getText(),textfield2.getText(),textfield3.getText());
     }
 }
 
