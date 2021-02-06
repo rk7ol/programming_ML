@@ -44,33 +44,17 @@ public class MainPageController<Combobox, string> {
 
     @FXML
     //菜品名称
-    private void addaction1()
-    {
-        Food Name = new Food();
-        Name.names = textfield1.getText();//获取当前输入的菜品名称
-        Food food =new Food();
-        food.getNames();
-       // System.out.println(names);
+    private void addaction1() {
     }
 
     @FXML
     //销售方式
     private  void addaction2() {
-        Food Way=new Food();
-        Way.ways=textfield2.getText();
-        Food food =new Food();
-        food.getWays();
-
     }
 
     @FXML
     //价格
     private void addaction3() {
-        Food Price=new Food();
-        Price.price=textfield3.getText();
-       // System.out.println(price);
-        Food food =new Food();
-        food.getPrice();
     }
 
     @FXML
@@ -80,6 +64,8 @@ public class MainPageController<Combobox, string> {
         addaction1();
         addaction2();
         addaction3();
+        System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
+        sendRegisterFoodRequest("1",textfield1.getText(),textfield2.getText(),textfield3.getText());
     }
 }
 
