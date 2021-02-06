@@ -44,7 +44,14 @@ public class MessageManager<T extends Message> {
                     Message message = receiveBuffer.poll();
                     MessageHandler<? extends Message> handler = getHandler(message.getClass());
 
-                    handler.doHandle(message);
+                    if (handler == null) {
+                        //no handler
+                        System.out.println("message:<" + message.getClass() + "> handler not register");
+                    } else {
+                        //do handle
+                        handler.doHandle(message);
+                    }
+
                 }
 
 
