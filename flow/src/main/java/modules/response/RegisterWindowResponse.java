@@ -5,43 +5,45 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
 /**
- *  register foods to server
+ * register window to server
  *
- *  int flag
+ *
+ * string ID
+ *
  */
-public class RegisterFoodResponse extends Response {
+public class RegisterWindowResponse extends Response {
+    private String ID;
 
-    private int flag;
-
-    public int getFlag() {
-        return flag;
+    public String getID() {
+        return ID;
     }
 
-    public RegisterFoodResponse(int flag) {
-        super("REGISTER_FOOD_RESPONSE");
-        this.flag = flag;
+    public RegisterWindowResponse(String ID) {
+        super("REGISTER_WINDOW_RESPONSE");
+        this.ID = ID;
     }
 
-    public RegisterFoodResponse(GenericRecord record) {
+    public RegisterWindowResponse(GenericRecord record) {
         super(record);
     }
+
 
     @Override
     public void deserialize(GenericRecord record) {
 
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
-        this.flag = (int) record.get("flag");
+        this.ID = record.get("ID").toString();
 
     }
 
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
+
         record.put("type", symbol);
 
-
-        record.put("flag", flag);
+        record.put("ID", ID);
 
 
         return record;
@@ -49,8 +51,7 @@ public class RegisterFoodResponse extends Response {
 
     @Override
     protected void registerSchema() {
-
-        registerSchema(this.getClass(), "schemas/response/RegisterFoodResponse.avsc");
+        registerSchema(this.getClass(), "schemas/response/RegisterWindowResponse.avsc");
 
     }
 }

@@ -1,23 +1,29 @@
 package modules.request;
 
+import modules.Food;
 import modules.Request;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
+/**
+ *
+ *  register food to server
+ *
+ * string name
+ *
+ * string method
+ *
+ * double price
+ *
+ */
 public class RegisterFoodRequest extends Request {
 
-
-    private String ID;
 
     private String name;
 
     private String method;
 
     private double price;
-
-    public String getID() {
-        return ID;
-    }
 
     public String getName() {
         return name;
@@ -30,10 +36,10 @@ public class RegisterFoodRequest extends Request {
     public double getPrice() {
         return price;
     }
+    
 
-    public RegisterFoodRequest(String ID, String name, String method, double price) {
-        super("REGISTERFOODREQUEST");
-        this.ID = ID;
+    public RegisterFoodRequest(String name, String method, double price) {
+        super("REGISTER_FOOD_REQUEST");
         this.name = name;
         this.method = method;
         this.price = price;
@@ -48,7 +54,6 @@ public class RegisterFoodRequest extends Request {
 
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
-        this.ID = record.get("ID").toString();
         this.name = record.get("name").toString();
         this.method = record.get("method").toString();
         this.price = (double) record.get("price");
@@ -62,7 +67,6 @@ public class RegisterFoodRequest extends Request {
 
         record.put("type", symbol);
 
-        record.put("ID", ID);
         record.put("name", name);
         record.put("method", method);
         record.put("price", price);

@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "name": "SellFoodRequest",
+  "fields": [
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "requestValue",
+        "symbols": [
+          "REGISTER_FOOD_REQUEST",
+          "ADD_FOODS_REQUEST",
+          "REGISTER_WINDOW_REQUEST",
+          "SHOW_ALL_FOODS_REQUEST",
+          "SHOW_WINDOW_FOODS_REQUEST",
+          "SELL_FOOD_REQUEST",
+          "SETTLE_REQUEST"
+        ]
+      }
+    },
+    {
+      "name": "foods",
+      "type": {
+        "name": "FoodsRecord",
+        "type": "record",
+        "fields": [
+          {
+            "name": "FoodArray",
+            "type": {
+              "type": "array",
+              "items": [
+                {
+                  "name": "food",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "type": "string"
+                    },
+                    {
+                      "name": "price",
+                      "type": "double"
+                    },
+                    {
+                      "name": "method",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

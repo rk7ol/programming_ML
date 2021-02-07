@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "RegisterFoodRequest",
+  "name": "ShowWindowFoodsRequest",
   "fields": [
     {
       "name": "type",
@@ -17,18 +17,9 @@
           "SETTLE_REQUEST"
         ]
       }
-    },
-    {
-      "name": "name",
+    },{
+      "name": "ID",
       "type": "string"
-    },
-    {
-      "name": "method",
-      "type": "string"
-    },
-    {
-      "name": "price",
-      "type": "double"
     }
   ]
 }

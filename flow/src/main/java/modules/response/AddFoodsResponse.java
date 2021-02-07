@@ -5,11 +5,11 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
 /**
- *  register foods to server
+ *  register food to server
  *
  *  int flag
  */
-public class RegisterFoodResponse extends Response {
+public class AddFoodsResponse extends Response {
 
     private int flag;
 
@@ -17,14 +17,15 @@ public class RegisterFoodResponse extends Response {
         return flag;
     }
 
-    public RegisterFoodResponse(int flag) {
-        super("REGISTER_FOOD_RESPONSE");
+    public AddFoodsResponse(int flag) {
+        super("ADD_FOODS_RESPONSE");
         this.flag = flag;
     }
 
-    public RegisterFoodResponse(GenericRecord record) {
+    public AddFoodsResponse(GenericRecord record) {
         super(record);
     }
+
 
     @Override
     public void deserialize(GenericRecord record) {
@@ -38,8 +39,8 @@ public class RegisterFoodResponse extends Response {
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
-        record.put("type", symbol);
 
+        record.put("type", symbol);
 
         record.put("flag", flag);
 
@@ -49,8 +50,7 @@ public class RegisterFoodResponse extends Response {
 
     @Override
     protected void registerSchema() {
-
-        registerSchema(this.getClass(), "schemas/response/RegisterFoodResponse.avsc");
+        registerSchema(this.getClass(), "schemas/response/AddFoodsResponse.avsc");
 
     }
 }
