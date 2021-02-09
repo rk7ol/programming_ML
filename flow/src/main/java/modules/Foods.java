@@ -21,7 +21,7 @@ public class Foods extends AvroUnit {
     static {
         try {
             //load schema
-            FOOD_ARRAY_SCHEMA = new Schema.Parser().parse(FoodsResponse.class.getClassLoader().getResourceAsStream("schemas/FoodArray.avsc"));
+            FOOD_ARRAY_SCHEMA = new Schema.Parser().parse(Foods.class.getClassLoader().getResourceAsStream("schemas/FoodArray.avsc"));
         } catch (IOException e) {
             e.printStackTrace();
         }
