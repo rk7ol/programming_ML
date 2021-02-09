@@ -1,9 +1,7 @@
 import flow.MessageManager;
-import handlers.FoodsResponseHandler;
 import handlers.RegisterFoodResponseHandler;
 import modules.Food;
 import modules.Response;
-import modules.response.FoodsResponse;
 import modules.response.RegisterFoodResponse;
 
 import java.util.Random;
@@ -11,7 +9,7 @@ import java.util.Random;
 public class MainApp {
 
     public static void main(String[] args) {
-
+/*
         MessageManager<Response> messageManager = new MessageManager<>(FoodsResponse.class);
 
         new Thread(new Runnable() {
@@ -41,6 +39,6 @@ public class MainApp {
         messageManager.addHandler(RegisterFoodResponse.class, new RegisterFoodResponseHandler());
         messageManager.start();
 
-
+*/
     }
 }
