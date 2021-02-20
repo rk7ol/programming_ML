@@ -1,0 +1,57 @@
+{
+  "type": "record",
+  "name": "ShowAllFoodsResponse",
+  "fields": [
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "responseValue",
+        "symbols": [
+          "REGISTER_FOOD_RESPONSE",
+          "ADD_FOODS_RESPONSE",
+          "REGISTER_WINDOW_RESPONSE",
+          "SHOW_ALL_FOODS_RESPONSE",
+          "SHOW_WINDOW_FOODS_RESPONSE",
+          "SELL_FOOD_RESPONSE",
+          "SETTLE_RESPONSE"
+        ]
+      }
+    },
+    {
+      "name": "foods",
+      "type": {
+        "name": "FoodsRecord",
+        "type": "record",
+        "fields": [
+          {
+            "name": "FoodArray",
+            "type": {
+              "type": "array",
+              "items": [
+                {
+                  "name": "food",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "type": "string"
+                    },
+                    {
+                      "name": "price",
+                      "type": "double"
+                    },
+                    {
+                      "name": "method",
+                      "type": ["null", "string"]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

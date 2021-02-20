@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "RegisterFoodResponse",
+  "name": "RegisterWindowResponse",
   "fields": [
     {
       "name": "type",
@@ -19,8 +19,8 @@
       }
     },
     {
-      "name": "flag",
-      "type": "int"
+      "name": "ID",
+      "type": "string"
     }
   ]
 }

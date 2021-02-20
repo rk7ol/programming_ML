@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "RegisterFoodRequest",
+  "name": "SettleRequest",
   "fields": [
     {
       "name": "type",
@@ -19,16 +19,8 @@
       }
     },
     {
-      "name": "name",
+      "name": "ID",
       "type": "string"
-    },
-    {
-      "name": "method",
-      "type": "string"
-    },
-    {
-      "name": "price",
-      "type": "double"
     }
   ]
 }

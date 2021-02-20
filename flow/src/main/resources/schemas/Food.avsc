@@ -9,6 +9,10 @@
     {
       "name": "price",
       "type": "double"
+    },
+    {
+      "name": "method",
+      "type": ["null", "string"]
     }
   ]
 }

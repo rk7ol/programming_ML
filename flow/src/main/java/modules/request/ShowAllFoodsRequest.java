@@ -4,48 +4,38 @@ import modules.Request;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
-public class FoodsRequest extends Request {
+/**
+ *  show all foods registered in server
+ *
+ */
+public class ShowAllFoodsRequest extends Request {
 
-
-    private String ID;
-
-    public FoodsRequest(String ID) {
-        super("FOODSREQUEST");
-        this.ID = ID;
+    public ShowAllFoodsRequest() {
+        super("SHOW_ALL_FOODS_REQUEST");
     }
 
-    public FoodsRequest(GenericRecord record) {
+    public ShowAllFoodsRequest(GenericRecord record) {
         super(record);
     }
-
-
 
     @Override
     public void deserialize(GenericRecord record) {
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
-        this.ID = record.get("id").toString();
-
-
-
     }
 
     @Override
     public GenericRecord serialize() {
-        GenericRecord record = new GenericData.Record(getSchema());
 
-        record.put("type", this.symbol);
-        record.put("id", ID);
+        GenericRecord record = new GenericData.Record(getSchema());
+        record.put("type", symbol);
+
         return record;
     }
 
     @Override
     protected void registerSchema() {
-        registerSchema(this.getClass(), "schemas/request/FoodsRequest.avsc");
-    }
+        registerSchema(this.getClass(), "schemas/request/ShowAllFoodsRequest.avsc");
 
-
-    public String getID() {
-        return ID;
     }
 }

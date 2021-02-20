@@ -1,12 +1,10 @@
-import modules.Food;
 import modules.Message;
-import modules.response.FoodsResponse;
 import modules.response.RegisterFoodResponse;
+import modules.response.RegisterWindowResponse;
 import utils.kafka.MessageReceiver;
 import utils.kafka.MessageSender;
 
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
 
 public class AvroTest {
@@ -22,7 +20,7 @@ public class AvroTest {
 
         MessageSender producer = new MessageSender("dodlee.cn:9092");
 
-        MessageReceiver consumer = new MessageReceiver("dodlee.cn:9092", FoodsResponse.class);
+        MessageReceiver consumer = new MessageReceiver("dodlee.cn:9092", RegisterWindowResponse.class);
 
 
         //send and receive process

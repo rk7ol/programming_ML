@@ -2,7 +2,12 @@
   "type": "enum",
   "name": "responseValue",
   "symbols": [
-    "FOODSRESPONSE",
-    "REGISTERFOODRESPONSE"
+    "REGISTER_FOOD_RESPONSE",
+    "ADD_FOODS_RESPONSE",
+    "REGISTER_WINDOW_RESPONSE",
+    "SHOW_ALL_FOODS_RESPONSE",
+    "SHOW_WINDOW_FOODS_RESPONSE",
+    "SELL_FOOD_RESPONSE",
+    "SETTLE_RESPONSE"
   ]
 }

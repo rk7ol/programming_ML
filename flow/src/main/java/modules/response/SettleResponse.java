@@ -5,43 +5,46 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
 /**
- *  register foods to server
  *
- *  int flag
+ *  settle window
+ *
+ *
+ * double profit
  */
-public class RegisterFoodResponse extends Response {
+public class SettleResponse extends Response {
 
-    private int flag;
+    private double profit;
 
-    public int getFlag() {
-        return flag;
+    public double getFlag() {
+        return profit;
     }
 
-    public RegisterFoodResponse(int flag) {
-        super("REGISTER_FOOD_RESPONSE");
-        this.flag = flag;
+    public SettleResponse(double totallyPrice) {
+        super("SETTLE_RESPONSE");
+        this.profit = totallyPrice;
     }
 
-    public RegisterFoodResponse(GenericRecord record) {
+    public SettleResponse(GenericRecord record) {
         super(record);
     }
+
 
     @Override
     public void deserialize(GenericRecord record) {
 
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
-        this.flag = (int) record.get("flag");
+        this.profit = (double) record.get("profit");
 
     }
 
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
+
         record.put("type", symbol);
 
-
-        record.put("flag", flag);
+        record.put("profit", profit);
 
 
         return record;
@@ -49,8 +52,8 @@ public class RegisterFoodResponse extends Response {
 
     @Override
     protected void registerSchema() {
-
-        registerSchema(this.getClass(), "schemas/response/RegisterFoodResponse.avsc");
+        registerSchema(this.getClass(), "schemas/response/SettleResponse.avsc");
 
     }
+
 }

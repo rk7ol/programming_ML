@@ -1,6 +1,5 @@
 package utils.avro;
 
-import modules.response.FoodsResponse;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 
@@ -34,7 +33,7 @@ public abstract class AvroUnit implements AvroSerializable, AvroDeserializable {
     protected Schema loadSchema(String resourcePath) {
 
         try {
-            return new Schema.Parser().parse(FoodsResponse.class.getClassLoader().getResourceAsStream(resourcePath));
+            return new Schema.Parser().parse(AvroUnit.class.getClassLoader().getResourceAsStream(resourcePath));
         } catch (IOException e) {
             System.out.println("load schema: " + resourcePath + " fail!");
         }

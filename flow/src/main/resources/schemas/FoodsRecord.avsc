@@ -1,20 +1,9 @@
 {
+  "name": "FoodsRecord",
   "type": "record",
-  "name": "FoodsList",
   "fields": [
     {
-      "name": "type",
-      "type": {
-        "type": "enum",
-        "name": "responseValue",
-        "symbols": [
-          "FOODSRESPONSE",
-          "REGISTERFOODRESPONSE"
-        ]
-      }
-    },
-    {
-      "name": "foods",
+      "name": "FoodArray",
       "type": {
         "type": "array",
         "items": [
@@ -29,6 +18,10 @@
               {
                 "name": "price",
                 "type": "double"
+              },
+              {
+                "name": "method",
+                "type": ["null", "string"]
               }
             ]
           }
