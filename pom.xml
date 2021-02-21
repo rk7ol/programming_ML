@@ -12,7 +12,6 @@
         <module>flow</module>
         <module>back</module>
         <module>front</module>
-        <module>MySql</module>
     </modules>
 
 
