@@ -1,16 +1,16 @@
 package controllers;
 
 //import controllers.Food;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import send.send;
 
 
 
-public class MainPageController<Combobox, string> {
-
-
+public class MainPageController<Food> {
 
     @FXML
     private Button buttonAdd;
@@ -22,8 +22,8 @@ public class MainPageController<Combobox, string> {
     private Button button1;
 
     @FXML
-    private Combobox Combobox;
-
+    private ComboBox<Food> Combobox;
+    Combobox.getItems.add(new Food(name:"w", method:"w", price:1));
 
     @FXML
     private TextField textfield1;
@@ -66,7 +66,7 @@ public class MainPageController<Combobox, string> {
         addaction2();
         addaction3();
         System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
-        send.sendRegisterFoodRequest("1",textfield1.getText(),textfield2.getText(),textfield3.getText());
+        send.sendRegisterFoodRequest(textfield1.getText(),textfield2.getText(),textfield3.getText());
     }
 }
 
