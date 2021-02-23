@@ -14,7 +14,7 @@ public class SellFoodResponse extends Response {
 
     private double totallyPrice;
 
-    public double getFlag() {
+    public double getTotallyPrice() {
         return totallyPrice;
     }
 
