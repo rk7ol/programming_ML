@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import modules.Food;
 import send.send;
 
 
@@ -25,11 +24,6 @@ public class MainPageController<Food> {
     @FXML
     private ComboBox<Food> Combobox;
 
-    @FXML
-    //菜品选择菜单的action
-    private void yes() {
-        Combobox.getItems().add(new Food(name:"w", method:"w", price:1));
-    }
 
     @FXML
     private TextField textfield1;
@@ -43,6 +37,7 @@ public class MainPageController<Food> {
     @FXML
     //确认所选择菜品
     private void yes() {
+        Combobox.getItems().add(new Food(name:"w", method:"w", price:1));
     }
 
     @FXML

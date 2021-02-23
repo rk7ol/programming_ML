@@ -36,6 +36,6 @@
          </font>
       </Text>
       <Button fx:id="button0" layoutX="353.0" layoutY="90.0" mnemonicParsing="false" onAction="#yes" prefHeight="36.0" prefWidth="83.0" text="确认" />
-      <ComboBox fx:id="Combobox" editable="true" layoutX="60.0" layoutY="90.0" onAction="#yes" prefHeight="36.0" prefWidth="269.0" promptText="请选择菜品" />
+      <ComboBox fx:id="Combobox" editable="true" layoutX="62.0" layoutY="90.0" prefHeight="36.0" prefWidth="269.0" promptText="请选择菜品" />
    </children>
 </AnchorPane>
