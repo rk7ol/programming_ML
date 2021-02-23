@@ -28,7 +28,6 @@ public class MainPageController<Food> {
     @FXML
     //菜品选择菜单的action
     private void yes() {
-
         Combobox.getItems().add(new Food(name:"w", method:"w", price:1));
     }
 
