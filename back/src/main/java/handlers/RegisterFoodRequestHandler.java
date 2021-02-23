@@ -7,7 +7,7 @@ import modules.response.RegisterFoodResponse;
 
 public class RegisterFoodRequestHandler extends MessageHandler<RegisterFoodRequest> {
     int DBRegisterFood(RegisterFoodRequest food){
-        System.out.println(food.getID());
+       // System.out.println(food.getID());
         return 1;
     }
 

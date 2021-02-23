@@ -1,3 +1,4 @@
+/*
 import flow.MessageManager;
 import handlers.FoodsRequestHandler;
 import handlers.RegisterFoodRequestHandler;
@@ -42,3 +43,4 @@ public class MainApp {
 
     }
 }
+*/

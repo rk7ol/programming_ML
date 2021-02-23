@@ -15,7 +15,7 @@ public class SettleResponse extends Response {
 
     private double profit;
 
-    public double getFlag() {
+    public double getProfit() {
         return profit;
     }
 
