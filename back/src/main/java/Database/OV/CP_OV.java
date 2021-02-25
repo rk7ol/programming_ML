@@ -5,14 +5,14 @@ public class CP_OV {//菜品表的映射
     private String ID = "";//菜品ID
     private String Name = "";//菜品名称
     private String Way = "";//售卖方式
-    private int Price;//价格
+    private double Price;//价格
 
     public CP_OV() {
     }
 
     ;
 
-    public CP_OV(String id, String name, String way, int price) {
+    public CP_OV(String id, String name, String way, double price) {
         this.ID = id;
         this.Name = name;
         this.Way = way;
@@ -31,7 +31,7 @@ public class CP_OV {//菜品表的映射
         return Way;
     }
 
-    public int getPrice() {//获取售卖价格
+    public double getPrice() {//获取售卖价格
         return Price;
     }
 
@@ -47,7 +47,7 @@ public class CP_OV {//菜品表的映射
         Way = way;
     }
 
-    public void setPrice(int price) {//设置价格
+    public void setPrice(double price) {//设置价格
         Price = price;
     }
 }//菜品表的映射(提供get,set)

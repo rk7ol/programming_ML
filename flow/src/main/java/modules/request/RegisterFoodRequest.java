@@ -6,24 +6,27 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
 /**
- *
- *  register food to server
- *
+ * register food to server
+ * <p>
  * string name
- *
+ * <p>
  * string method
- *
+ * <p>
  * double price
- *
  */
 public class RegisterFoodRequest extends Request {
 
+    private String id;
 
     private String name;
 
     private String method;
 
     private double price;
+
+    public String getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -36,10 +39,11 @@ public class RegisterFoodRequest extends Request {
     public double getPrice() {
         return price;
     }
-    
 
-    public RegisterFoodRequest(String name, String method, double price) {
+
+    public RegisterFoodRequest(String id, String name, String method, double price) {
         super("REGISTER_FOOD_REQUEST");
+        this.id = id;
         this.name = name;
         this.method = method;
         this.price = price;

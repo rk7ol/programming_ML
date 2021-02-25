@@ -32,7 +32,7 @@ public class AvroTest {
                 e.printStackTrace();
             }
 
-            producer.produce(new RegisterFoodResponse(1));
+            producer.produce(new RegisterFoodResponse(true));
 
 
 
