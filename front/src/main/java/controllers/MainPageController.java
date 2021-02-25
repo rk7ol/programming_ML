@@ -68,7 +68,7 @@ public class MainPageController{
         addaction2();
         addaction3();
         System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
-        send.sendRegisterFoodRequest(textfield1.getText(),textfield2.getText(),textfield3.getText());
+        //send.sendRegisterFoodRequest(textfield1.getText(),textfield2.getText(),textfield3.getText());
     }
 }
 

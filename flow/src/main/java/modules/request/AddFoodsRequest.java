@@ -21,7 +21,7 @@ public class AddFoodsRequest extends Request {
         return foods.getContent();
     }
 
-    public AddFoodsRequest(Food... foods) {
+    public AddFoodsRequest(String ID, Food... foods) {
         super("ADD_FOODS_REQUEST");
         this.foods = new Foods(foods);
     }

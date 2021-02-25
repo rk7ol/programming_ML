@@ -6,8 +6,8 @@ import modules.request.*;
 
 public class send {
     //从服务器中选择已有菜品进行添加
-    public static void sendAddFoodsRequest(Food... foods){
-        MessageManager.sendMessage(new AddFoodsRequest(foods));
+    public static void sendAddFoodsRequest(String ID,Food... foods){
+        MessageManager.sendMessage(new AddFoodsRequest(ID,foods));
     }
     //注册菜品到服务器
     public static void sendRegisterFoodRequest(String id,String name, String method, String price){
