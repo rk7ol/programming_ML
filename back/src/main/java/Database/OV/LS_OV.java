@@ -1,6 +1,6 @@
 package Database.OV;
 
-public class LS_OV {//流水表的映射
+public class  LS_OV {//流水表的映射
     private String ID = "";//流水ID
     private String C_ID = "";//卡机ID
     private int Price;//总售价
