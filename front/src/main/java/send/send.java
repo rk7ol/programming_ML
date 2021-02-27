@@ -10,16 +10,16 @@ public class send {
         MessageManager.sendMessage(new AddFoodsRequest(ID,foods));
     }
     //注册菜品到服务器
-    public static void sendRegisterFoodRequest(String id,String name, String method, String price){
-        MessageManager.sendMessage(new RegisterFoodRequest(id, name,method,Double.parseDouble(price)));
+    public static void sendRegisterFoodRequest(String name, String method, String price){
+        MessageManager.sendMessage(new RegisterFoodRequest(name,method,Double.parseDouble(price)));
     }
     //注册卡机
     public static void sendRegisterWindowRequest(Food... foods){
         MessageManager.sendMessage(new RegisterWindowRequest(foods));
     }
     //菜品交易，服务器进行结算
-    public static void sendSellFoodRequest(Food... foods){
-        MessageManager.sendMessage(new SellFoodRequest(foods));
+    public static void sendSellFoodRequest(String ID,Food... foods){
+        MessageManager.sendMessage(new SellFoodRequest(ID,foods));
     }
     //营业额结算
     public static void sendRegisterSettleRequest(String ID){
