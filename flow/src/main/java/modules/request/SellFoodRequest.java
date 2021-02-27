@@ -17,12 +17,16 @@ import java.util.List;
 public class SellFoodRequest extends Request {
     private Foods foods;
 
+
     private String ID;
 
     public List<Food> getFoods() {
         return foods.getContent();
     }
 
+    public String getID() {
+        return ID;
+    }
 
     public SellFoodRequest(String ID, Food... foods) {
         super("SELL_FOOD_REQUEST");

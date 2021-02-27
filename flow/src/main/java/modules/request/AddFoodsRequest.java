@@ -9,19 +9,24 @@ import org.apache.avro.generic.GenericRecord;
 import java.util.List;
 
 /**
- *  add new food to window
- *
- *  List<Food> foods
- *  String ID
+ * add new food to window
+ * <p>
+ * List<Food> foods
+ * String ID
  */
 public class AddFoodsRequest extends Request {
 
     private Foods foods;
 
+
     private String ID;
 
     public List<Food> getFoods() {
         return foods.getContent();
+    }
+
+    public String getID() {
+        return ID;
     }
 
     public AddFoodsRequest(String ID, Food... foods) {
@@ -56,7 +61,6 @@ public class AddFoodsRequest extends Request {
         record.put("foods", foods.serialize());
 
         record.put("ID", ID);
-
 
 
         return record;
