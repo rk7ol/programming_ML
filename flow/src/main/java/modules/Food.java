@@ -6,7 +6,7 @@ import utils.avro.AvroUnit;
 
 /**
  * string ID
- *
+ * <p>
  * string name
  * <p>
  * double price
@@ -64,16 +64,25 @@ public class Food extends AvroUnit {
 
     @Override
     public void deserialize(GenericRecord record) {
-        this.ID = record.get("ID").toString();
+
+        if (record.get("ID") != null)
+            this.ID = record.get("ID").toString();
+
         this.name = record.get("name").toString();
         this.price = (double) record.get("price");
-        this.method = record.get("method").toString();
+
+        if (record.get("method") != null)
+            this.method = record.get("method").toString();
     }
 
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
-        record.put("ID", ID);
+
+        if (ID != null)
+            record.put("ID", ID);
+
+
         record.put("name", name);
         record.put("price", price);
 
