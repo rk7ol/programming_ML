@@ -7,7 +7,7 @@ import modules.response.SettleResponse;
 public class SettleResponseHandler extends MessageHandler<SettleResponse> {
     @Override
     public boolean handle(SettleResponse message) {
-        double profit=message.getFlag();
+        double profit=message.getProfit();
         return true;
     }
 }

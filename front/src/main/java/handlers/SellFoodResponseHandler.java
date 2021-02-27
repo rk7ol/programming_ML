@@ -7,7 +7,7 @@ import modules.response.SellFoodResponse;
 public class SellFoodResponseHandler extends MessageHandler<SellFoodResponse> {
     @Override
     public boolean handle(SellFoodResponse message) {
-        double price=message.getFlag();
+        double price=message.getTotallyPrice();
         return true;
     }
 }
