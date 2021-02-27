@@ -7,17 +7,17 @@ import org.apache.avro.generic.GenericRecord;
 /**
  *  register food to server
  *
- *  int flag
+ *  boolean flag
  */
 public class AddFoodsResponse extends Response {
 
-    private int flag;
+    private boolean flag;
 
-    public int getFlag() {
+    public boolean getFlag() {
         return flag;
     }
 
-    public AddFoodsResponse(int flag) {
+    public AddFoodsResponse(boolean flag) {
         super("ADD_FOODS_RESPONSE");
         this.flag = flag;
     }
@@ -32,7 +32,7 @@ public class AddFoodsResponse extends Response {
 
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
-        this.flag = (int) record.get("flag");
+        this.flag = (boolean) record.get("flag");
 
     }
 
