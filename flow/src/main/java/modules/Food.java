@@ -5,13 +5,18 @@ import org.apache.avro.generic.GenericRecord;
 import utils.avro.AvroUnit;
 
 /**
- *  string name
+ * string ID
  *
- *  double price
- *
- *  string method
+ * string name
+ * <p>
+ * double price
+ * <p>
+ * string method
  */
 public class Food extends AvroUnit {
+
+
+    private String ID;
 
     private String name;
 
@@ -19,6 +24,9 @@ public class Food extends AvroUnit {
 
     private String method;
 
+    public String getID() {
+        return ID;
+    }
 
     public String getName() {
         return name;
@@ -43,12 +51,20 @@ public class Food extends AvroUnit {
         this.method = method;
     }
 
+    public Food(String ID, String name, double price, String method) {
+        this.ID = ID;
+        this.name = name;
+        this.price = price;
+        this.method = method;
+    }
+
     public Food(GenericRecord record) {
         super(record);
     }
 
     @Override
     public void deserialize(GenericRecord record) {
+        this.ID = record.get("ID").toString();
         this.name = record.get("name").toString();
         this.price = (double) record.get("price");
         this.method = record.get("method").toString();
@@ -57,6 +73,7 @@ public class Food extends AvroUnit {
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
+        record.put("ID", ID);
         record.put("name", name);
         record.put("price", price);
 

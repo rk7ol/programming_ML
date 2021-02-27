@@ -34,6 +34,10 @@
                   "type": "record",
                   "fields": [
                     {
+                      "name": "ID",
+                      "type": "string"
+                    },
+                    {
                       "name": "name",
                       "type": "string"
                     },
