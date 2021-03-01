@@ -36,6 +36,7 @@ public class Start {
     private void yesaction(){
         //发送卡机id函数
         textfield0.getText();
+        //将卡机ID发送，发送后按照id显示菜品
         setScene(scene1);
     }
 

@@ -1,10 +1,12 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
+
 
 public class Account {
     @FXML
-    private Text text;//显示营业额
+    private TextField account;
+    //显示营业额
 
 }

@@ -29,7 +29,8 @@ public class RegisterIDController {
     @FXML
     //选择菜品后的确认按钮
     private void addAction(){
-         texfield.getText();
+        //将 texfield.getText();获取的内容发送
+        //发送完成后，清空输入框，可以继续输入
          texfield.setText("");
     }
 
@@ -43,11 +44,12 @@ public class RegisterIDController {
     private void showAllAction()
     {
         send.sendShowAllFoodsRequest();//发送请求
-       // showAlltext显示全部菜品
+       // 在showAlltext里显示全部菜品
     }
 
 
     @FXML
+    //该按钮用于在所有菜品都选择完成之后，进行卡机的注册操作
     private void registerAction(){
       //  send.sendRegisterFoodRequest();
         setScene(scene4);
@@ -55,6 +57,7 @@ public class RegisterIDController {
 
     @FXML
     private void no()
+            //取消注册
     {
         setScene(scene1);//返回主界面
     }

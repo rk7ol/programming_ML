@@ -6,13 +6,13 @@ import javafx.stage.Stage;
 
 public class ViewApp extends Application {
 
-    Scene scene0;//输入卡机，弹出窗口
-    Scene scene1;//显示菜品，并且能添加菜品
-    Scene scene2;//注册菜品
-    Scene scene3;//注册卡机
-    Scene scene4;//返回卡机id
-    Scene scene5;//营业额结算
-    Scene scene6;//交易页面
+    Scene scene0;//输入卡机，弹出窗口 //Start.fxml
+    Scene scene1;//显示菜品，并且能添加菜品 //MainPage.fxml
+    Scene scene2;//注册菜品 //register.fxml
+    Scene scene3;//注册卡机 //RegisterID.fxml
+    Scene scene4;//返回卡机id //ID.fxml
+    Scene scene5;//营业额结算 //Account.fxml
+    Scene scene6;//交易页面  //TradePage.fxml
 
     Stage stage;
 
@@ -50,7 +50,7 @@ public class ViewApp extends Application {
         AnchorPane page6 = loader6.load();
         scene6 = new Scene(page6);//交易页面
 
-        stage.setScene(scene6);
+        stage.setScene(scene1);
 
         stage.show();
 

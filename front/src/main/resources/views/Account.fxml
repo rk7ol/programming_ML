@@ -14,6 +14,6 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <Text fx:id="text" layoutX="158.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="account" layoutX="140.0" layoutY="78.0" prefHeight="38.0" prefWidth="184.0" />
    </children>
 </AnchorPane>

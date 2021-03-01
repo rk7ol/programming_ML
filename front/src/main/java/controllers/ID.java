@@ -1,10 +1,12 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
+
 
 public class ID {
 
     @FXML
-    private Text text;
+    private TextField ID;
+    //显示卡机的id
 }

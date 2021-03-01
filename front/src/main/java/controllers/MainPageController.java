@@ -64,7 +64,7 @@ public class MainPageController{
     //确认所选择菜品
     private void yes()
     {
-
+        //将已选择的菜品信息进行发送
         //弹出交易页面scene6
     }
 
@@ -88,6 +88,7 @@ public class MainPageController{
     private Button buttonScene2;
 
     @FXML
+    //注册菜品
     private void scene2action(){
         setScene(scene2);
     }
@@ -96,6 +97,7 @@ public class MainPageController{
     private Button buttonScene3;
 
     @FXML
+    //注册卡机
     private void scene3action(){
         setScene(scene3);
     }
@@ -104,6 +106,7 @@ public class MainPageController{
     private Button buttonScene5;
 
     @FXML
+    //结算营业额
     private void scene5action(){
         setScene(scene5);
     }
