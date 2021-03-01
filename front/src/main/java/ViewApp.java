@@ -1,7 +1,10 @@
+import controllers.NavigateController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ViewApp extends Application {
@@ -14,16 +17,26 @@ public class ViewApp extends Application {
     Scene scene5;//营业额结算 //Account.fxml
     Scene scene6;//交易页面  //TradePage.fxml
 
-    Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        this.stage=stage;
+        stage.setResizable(false);
+
+        FXMLLoader loader = new FXMLLoader(Starter.class.getResource("views/Navigate.fxml"));
+        AnchorPane navigate = loader.load();
+        Scene scene = new Scene(navigate);
+
+        NavigateController controller = loader.getController();
+        controller.setMainStage(stage);
+
+        stage.setScene(scene);
+
 
         FXMLLoader loader0 = new FXMLLoader(Starter.class.getResource("views/Start.fxml"));
         AnchorPane page0 = loader0.load();
         scene0 = new Scene(page0);//开始界面
+
 
         FXMLLoader loader1 = new FXMLLoader(Starter.class.getResource("views/MainPage.fxml"));
         AnchorPane page1 = loader1.load();
@@ -50,14 +63,15 @@ public class ViewApp extends Application {
         AnchorPane page6 = loader6.load();
         scene6 = new Scene(page6);//交易页面
 
-        stage.setScene(scene1);
+
+        controller.addPage("start", page0);
+        controller.addPage("register", page1);
+
+
 
         stage.show();
 
     }
 
-    private void setScene(Scene scene)
-    {
-        stage.setScene(scene);
-    }
+
 }
