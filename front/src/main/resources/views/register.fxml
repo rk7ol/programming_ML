@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+   <children>
+      <Text layoutX="34.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="注册菜品" wrappingWidth="168.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="34.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="菜品名称：">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="32.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="销售方式：">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="36.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="价格：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textfield1" layoutX="155.0" layoutY="86.0" onAction="#register1" prefHeight="36.0" prefWidth="269.0" />
+      <TextField fx:id="textfield2" layoutX="155.0" layoutY="153.0" onAction="#register2" prefHeight="36.0" prefWidth="269.0" />
+      <TextField fx:id="textfield3" layoutX="155.0" layoutY="219.0" onAction="#register3" prefHeight="36.0" prefWidth="269.0" />
+      <Button fx:id="buttonRegister" layoutX="160.0" layoutY="312.0" mnemonicParsing="false" onAction="#eventRegisterclick" prefHeight="36.0" prefWidth="84.0" text="确 认" />
+      <Button layoutX="307.0" layoutY="312.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="84.0" text="取 消" />
+   </children>
+</AnchorPane>
