@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="text1" prefHeight="515.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
+<AnchorPane fx:id="text1" prefHeight="515.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
    <children>
       <Button fx:id="buttonAdd" layoutX="60.0" layoutY="394.0" mnemonicParsing="false" onAction="#eventAddclick" prefHeight="36.0" prefWidth="112.0" text="添加菜品" />
       <GridPane layoutX="61.0" layoutY="108.0">

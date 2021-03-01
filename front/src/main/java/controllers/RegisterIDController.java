@@ -54,11 +54,13 @@ public class RegisterIDController {
     }
 
     @FXML
-    private void no(){
+    private void no()
+    {
         setScene(scene1);//返回主界面
     }
 
 
+    //界面跳转函数
     private void setScene(Scene scene)
     {
         stage.setScene(scene);

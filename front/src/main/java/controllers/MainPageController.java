@@ -19,6 +19,7 @@ public class MainPageController{
     Scene scene2;
     Scene scene3;
     Scene scene4;
+    Scene scene5;
 
     Stage stage;
 
@@ -27,6 +28,7 @@ public class MainPageController{
         this.scene2=scene2;
         this.scene3=scene3;
         this.scene4=scene4;
+        this.scene5=scene5;
         this.stage=stage;
     }
 
@@ -65,9 +67,9 @@ public class MainPageController{
 
     @FXML
     private void button1ClickEvent() {
-        textfield3.setText(" ");
-        textfield2.setText(" ");
-        textfield1.setText(" ");
+        textfield3.setText("");
+        textfield2.setText("");
+        textfield1.setText("");
         //清空输入框
     }
 
@@ -100,7 +102,7 @@ public class MainPageController{
 
     @FXML
     private void scene5action(){
-       // setScene(scene5);
+        setScene(scene5);
     }
 
 }
