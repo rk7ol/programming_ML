@@ -8,6 +8,8 @@ public class ViewApp extends Application {
 
     Scene scene1;
     Scene scene2;
+    Scene scene3;
+    Scene scene4;
 
     Stage stage;
 
@@ -25,11 +27,20 @@ public class ViewApp extends Application {
         AnchorPane page2 = loader2.load();
         scene2 = new Scene(page2);
 
-        stage.setScene(scene2);
+        FXMLLoader loader3 = new FXMLLoader(Starter.class.getResource("views/RegisterID.fxml"));
+        AnchorPane page3 = loader3.load();
+        scene3 = new Scene(page3);
+
+        FXMLLoader loader4 = new FXMLLoader(Starter.class.getResource("views/ID.fxml"));
+        AnchorPane page4 = loader4.load();
+        scene4 = new Scene(page4);
+
+        stage.setScene(scene1);
 
         stage.show();
 
     }
+
     private void setScene(Scene scene)
     {
         stage.setScene(scene);
