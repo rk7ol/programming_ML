@@ -1,20 +1,17 @@
 package modules.request;
 
-import modules.Food;
 import modules.Request;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 
 /**
- *
- *  register food to server
- *
+ * register food to server
+ * <p>
  * string name
- *
+ * <p>
  * string method
- *
+ * <p>
  * double price
- *
  */
 public class RegisterFoodRequest extends Request {
 
@@ -24,6 +21,7 @@ public class RegisterFoodRequest extends Request {
     private String method;
 
     private double price;
+
 
     public String getName() {
         return name;
@@ -36,7 +34,7 @@ public class RegisterFoodRequest extends Request {
     public double getPrice() {
         return price;
     }
-    
+
 
     public RegisterFoodRequest(String name, String method, double price) {
         super("REGISTER_FOOD_REQUEST");

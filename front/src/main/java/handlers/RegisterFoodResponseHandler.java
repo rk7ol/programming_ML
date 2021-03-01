@@ -7,7 +7,7 @@ import modules.response.RegisterFoodResponse;
 public class RegisterFoodResponseHandler extends MessageHandler<RegisterFoodResponse> {
     @Override
     public boolean handle(RegisterFoodResponse message) {
-        int flag=message.getFlag();
+        boolean flag=message.getFlag();
         return true;
     }
 }
