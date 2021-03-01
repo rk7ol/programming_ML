@@ -37,7 +37,7 @@ public class Start {
         //发送卡机id函数
         textfield0.getText();
         //将卡机ID发送，发送后按照id显示菜品
-        setScene(scene1);
+       // setScene(scene1);
     }
 
     @FXML
@@ -52,6 +52,6 @@ public class Start {
     private void scene3action()
     {
         receive(scene1,scene3,stage);
-        setScene(scene3);
+      //  setScene(scene3);
     }
 }

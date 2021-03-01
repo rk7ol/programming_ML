@@ -3,8 +3,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ViewApp extends Application {
@@ -64,8 +62,11 @@ public class ViewApp extends Application {
         scene6 = new Scene(page6);//交易页面
 
 
-        controller.addPage("start", page0);
-        controller.addPage("register", page1);
+        controller.addPage("卡机id登录", page0);
+        controller.addPage("选择添加菜品", page1);
+        controller.addPage("注册新菜品", page2);
+        controller.addPage("注册新卡机", page3);
+        //controller.addPage("卡机id登录", page);
 
 
 

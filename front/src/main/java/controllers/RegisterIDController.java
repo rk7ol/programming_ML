@@ -52,14 +52,14 @@ public class RegisterIDController {
     //该按钮用于在所有菜品都选择完成之后，进行卡机的注册操作
     private void registerAction(){
       //  send.sendRegisterFoodRequest();
-        setScene(scene4);
     }
 
     @FXML
     private void no()
             //取消注册
     {
-        setScene(scene1);//返回主界面
+        texfield.setText("");
+
     }
 
 
