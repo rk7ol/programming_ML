@@ -27,13 +27,17 @@ public class NavigateController {
 
     private Stage mainStage;
 
-    private List<Pane> panes = new ArrayList<>();
+    private final List<Pane> panes = new ArrayList<>();
 
 
     public void addPage(String name, Pane pane) {
         Button navigateButton = createNavigateButton(name, pane);
 
         pageBox.getChildren().add(navigateButton);
+
+        if (panes.isEmpty())
+            showPane(pane);
+
     }
 
     @FXML
@@ -49,8 +53,6 @@ public class NavigateController {
         button.setPrefHeight(20);
 
 
-
-
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -58,17 +60,10 @@ public class NavigateController {
 
                 showPane(pane);
 
-                mainStage.setWidth(pane.getPrefWidth() + pageBox.getWidth());
-                mainStage.setHeight(Double.max(pane.getPrefWidth(), pageBox.getPrefWidth()));
 
                 //stateResize(100, pane.getPrefWidth() + pageBox.getWidth(), Double.max(pane.getPrefWidth(), pageBox.getPrefWidth()));
 
 
-                if (!panes.contains(pane)) {
-                    //preload
-                    panes.add(pane);
-                    handle(actionEvent);
-                }
             }
         });
 
@@ -80,7 +75,24 @@ public class NavigateController {
             displayPane.getChildren().remove(0);
 
         displayPane.getChildren().add(pane);
+
+
+        if (!panes.contains(pane)) {
+            //preload
+            panes.add(pane);
+            showPane(pane);
+        }
+
+        //resize
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mainStage.setWidth(pane.getPrefWidth() + pageBox.getWidth());
+                mainStage.setHeight(Double.max(pane.getPrefWidth(), pageBox.getPrefWidth()));
+            }
+        });
     }
+
 
     private void stateResize(long intervalTime, double width, double height) {
 
