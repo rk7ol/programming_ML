@@ -12,6 +12,7 @@ public class ViewApp extends Application {
     Scene scene3;//注册卡机
     Scene scene4;//返回卡机id
     Scene scene5;//营业额结算
+    Scene scene6;//交易页面
 
     Stage stage;
 
@@ -45,7 +46,11 @@ public class ViewApp extends Application {
         AnchorPane page5 = loader5.load();
         scene5 = new Scene(page5);//营业额
 
-        stage.setScene(scene0);
+        FXMLLoader loader6 = new FXMLLoader(Starter.class.getResource("views/TradePage.fxml"));
+        AnchorPane page6 = loader6.load();
+        scene6 = new Scene(page6);//交易页面
+
+        stage.setScene(scene6);
 
         stage.show();
 

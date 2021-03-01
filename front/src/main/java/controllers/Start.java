@@ -11,7 +11,7 @@ public class Start {
     Scene scene3;
     Stage stage;
 
-    public void receive(Scene scene1,Scene scene2,Scene scene3,Scene scene4,Stage stage){
+    public void receive(Scene scene1,Scene scene3,Stage stage){
         this.scene1=scene1;
         this.scene3=scene3;
         this.stage=stage;
@@ -19,6 +19,7 @@ public class Start {
 
     private void setScene(Scene scene)
     {
+        receive(scene1,scene3,stage);
         stage.setScene(scene);
     }
 
@@ -47,7 +48,9 @@ public class Start {
     private Button scene3button;
 
     @FXML
-    private void scene3action(){
+    private void scene3action()
+    {
+        receive(scene1,scene3,stage);
         setScene(scene3);
     }
 }

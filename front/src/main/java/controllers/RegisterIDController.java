@@ -14,7 +14,7 @@ public class RegisterIDController {
     Scene scene1;
     Stage stage;
 
-    public void receive(Scene scene1, Scene scene2, Scene scene3, Scene scene4, Stage stage){
+    public void receive(Scene scene1, Scene scene4, Stage stage){
         this.scene1=scene1;
         this.scene4=scene4;
         this.stage=stage;
@@ -30,7 +30,7 @@ public class RegisterIDController {
     //选择菜品后的确认按钮
     private void addAction(){
          texfield.getText();
-         texfield.setText(" ");
+         texfield.setText("");
     }
 
     @FXML
@@ -63,6 +63,7 @@ public class RegisterIDController {
     //界面跳转函数
     private void setScene(Scene scene)
     {
+        receive(scene1,scene4,stage);
         stage.setScene(scene);
     }
 

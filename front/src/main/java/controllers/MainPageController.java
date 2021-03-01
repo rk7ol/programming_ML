@@ -23,7 +23,7 @@ public class MainPageController{
 
     Stage stage;
 
-    public void receive(Scene scene1,Scene scene2,Scene scene3,Scene scene4,Stage stage){
+    public void receive(Scene scene1, Scene scene2, Scene scene3, Scene scene4,Scene scene5, Stage stage){
         this.scene1=scene1;
         this.scene2=scene2;
         this.scene3=scene3;
@@ -34,6 +34,7 @@ public class MainPageController{
 
     private void setScene(Scene scene)
     {
+        receive(scene1,scene2,scene3,scene4,scene5,stage);
         stage.setScene(scene);
     }
 
@@ -61,8 +62,10 @@ public class MainPageController{
 
     @FXML
     //确认所选择菜品
-    private void yes() {
-        Combobox.getItems().add(new Food("w","w",1));
+    private void yes()
+    {
+
+        //弹出交易页面scene6
     }
 
     @FXML
