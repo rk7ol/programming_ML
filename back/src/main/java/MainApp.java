@@ -1,18 +1,15 @@
-/*
 import flow.MessageManager;
-import handlers.FoodsRequestHandler;
-import handlers.RegisterFoodRequestHandler;
+import handlers.*;
 import modules.Request;
-import modules.request.FoodsRequest;
-import modules.request.RegisterFoodRequest;
+import modules.request.*;
 
 public class MainApp {
 
     public static void main(String[] args) {
 
-        MessageManager<Request> messageManager = new MessageManager<>(FoodsRequest.class);
+        MessageManager<Request> messageManager = new MessageManager<Request>();
 
-        new Thread(new Runnable() {
+        /*new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true){
@@ -26,21 +23,23 @@ public class MainApp {
 
             }
         }).start();
+        */
 
-        //messageManager.addHandler(FoodsRequest.class, new FoodsRequestHandler());
+        messageManager.addHandler(AddFoodsRequest.class, new AddFoodsRequestHandler());
 
         messageManager.addHandler(RegisterFoodRequest.class,new RegisterFoodRequestHandler());
 
+        messageManager.addHandler(RegisterWindowRequest.class,new RegisterWindowRequestHandler());
+
+        messageManager.addHandler(SellFoodRequest.class,new SellFoodRequestHandler());
+
+        messageManager.addHandler(SettleRequest.class,new SettleRequestHandler());
+
+        messageManager.addHandler(ShowAllFoodsRequest.class,new ShowAllFoodRequestHandler());
+
+        messageManager.addHandler(ShowWindowFoodsRequest.class,new ShowWindowFoodsRequestHandler());
+
         messageManager.start();
-
-
-
-
-
-
-
-
 
     }
 }
-*/
