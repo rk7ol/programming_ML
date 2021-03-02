@@ -20,7 +20,7 @@
     },
     {
       "name": "flag",
-      "type": "int"
+      "type": "boolean"
     }
   ]
 }

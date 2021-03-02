@@ -20,10 +20,40 @@ public class MessageManager<T extends Message> {
     protected ArrayList<MessageReceiver> receivers;
     protected ArrayList<Class<? extends Message>> types;
 
-    private AtomicBoolean isRunning = new AtomicBoolean(true);
+    private final AtomicBoolean isRunning = new AtomicBoolean(true);
 
 
-    private Runnable sendMessageTask = new Runnable() {
+    public MessageManager() {
+        sendBuffer = new LinkedList<>();
+        receiveBuffer = new LinkedList<>();
+        sender = new MessageSender("dodlee.cn:9092");
+
+        receivers = new ArrayList<>();
+        this.types = new ArrayList<>();
+    }
+
+
+    /**
+     * create message manager with pre register message types
+     *
+     * @param types message types
+     */
+    public MessageManager(Class<? extends T>... types) {
+        this();
+
+
+
+
+
+        for (Class<? extends T> type : types) {
+            addNewReceiver(type);
+        }
+
+        this.types.addAll(Arrays.asList(types));
+    }
+
+
+    private final Runnable sendMessageTask = new Runnable() {
         @Override
         public void run() {
             while (isRunning.get()) {
@@ -34,7 +64,7 @@ public class MessageManager<T extends Message> {
         }
     };
 
-    private Runnable handleMessageTask = new Runnable() {
+    private final Runnable handleMessageTask = new Runnable() {
         @Override
         public void run() {
             while (isRunning.get()) {
@@ -59,24 +89,6 @@ public class MessageManager<T extends Message> {
 
         }
     };
-
-
-    public MessageManager(Class<? extends T>... types) {
-
-        sendBuffer = new LinkedList<>();
-        receiveBuffer = new LinkedList<>();
-
-        sender = new MessageSender("dodlee.cn:9092");
-        receivers = new ArrayList<>(types.length);
-        this.types = new ArrayList<>(types.length);
-
-
-        for (Class<? extends T> type : types) {
-            addNewReceiver(type);
-        }
-
-        this.types.addAll(Arrays.asList(types));
-    }
 
 
     public void start() {
@@ -120,7 +132,7 @@ public class MessageManager<T extends Message> {
 
     /**
      * @param type    type to handle
-     * @param handler
+     * @param handler message deal handler
      */
     public void addHandler(Class<? extends T> type, MessageHandler<? extends T> handler) {
 

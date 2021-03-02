@@ -7,7 +7,7 @@ import modules.response.AddFoodsResponse;
 public class AddFoodsResponseHandler extends MessageHandler<AddFoodsResponse> {
     @Override
     public boolean handle(AddFoodsResponse message) {
-        int flag=message.getFlag();
+        boolean flag=message.getFlag();
         return true;
     }
 }

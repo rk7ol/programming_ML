@@ -3,6 +3,10 @@
   "type": "record",
   "fields": [
     {
+      "name": "ID",
+      "type": ["null", "string"]
+    },
+    {
       "name": "name",
       "type": "string"
     },
