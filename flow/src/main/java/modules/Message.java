@@ -12,12 +12,21 @@ public abstract class Message extends AvroUnit {
 
     protected GenericData.EnumSymbol symbol;
 
+    protected String session;
 
-    protected Message(String symbol) {
+    public String getSession() {
+        return session;
+    }
+
+    protected Message(String session, String symbol) {
         this.symbol = createSymbol(symbol);
+
+        this.session = session;
 
 
     }
+
+
 
 
     protected Message(GenericRecord record) {

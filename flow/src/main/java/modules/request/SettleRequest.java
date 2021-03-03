@@ -18,8 +18,8 @@ public class SettleRequest extends Request {
         return ID;
     }
 
-    public SettleRequest(String ID) {
-        super("SETTLE_REQUEST");
+    public SettleRequest(String session, String ID) {
+        super(session, "SETTLE_REQUEST");
         this.ID = ID;
     }
 
@@ -30,7 +30,7 @@ public class SettleRequest extends Request {
 
     @Override
     public void deserialize(GenericRecord record) {
-
+        this.session = record.get("session").toString();
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
         this.ID = record.get("ID").toString();
@@ -40,7 +40,7 @@ public class SettleRequest extends Request {
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
-
+        record.put("session", session);
         record.put("type", symbol);
 
         record.put("ID", ID);

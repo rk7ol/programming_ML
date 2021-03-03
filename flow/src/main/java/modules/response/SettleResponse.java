@@ -19,8 +19,8 @@ public class SettleResponse extends Response {
         return profit;
     }
 
-    public SettleResponse(double totallyPrice) {
-        super("SETTLE_RESPONSE");
+    public SettleResponse(String session, double totallyPrice) {
+        super(session, "SETTLE_RESPONSE");
         this.profit = totallyPrice;
     }
 
@@ -31,7 +31,7 @@ public class SettleResponse extends Response {
 
     @Override
     public void deserialize(GenericRecord record) {
-
+        this.session = record.get("session").toString();
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
         this.profit = (double) record.get("profit");
@@ -41,7 +41,7 @@ public class SettleResponse extends Response {
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
-
+        record.put("session", session);
         record.put("type", symbol);
 
         record.put("profit", profit);

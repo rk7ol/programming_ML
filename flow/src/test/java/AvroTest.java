@@ -69,13 +69,13 @@ public class AvroTest {
 
     public static void main(String[] args) {
 
-        MessageTester<AddFoodsRequest> addFoodsRequestMessageTester = new MessageTester<>(new AddFoodsRequest("dw", new Food("s", 14)));
+        //MessageTester<AddFoodsRequest> addFoodsRequestMessageTester = new MessageTester<>(new AddFoodsRequest("dw", new Food("s", 14)));
 
         //addFoodsRequestMessageTester.test();
 
-        MessageTester<AddFoodsResponse> addFoodsResponseMessageTester = new MessageTester<>(new AddFoodsResponse(true));
+       // MessageTester<AddFoodsResponse> addFoodsResponseMessageTester = new MessageTester<>(new AddFoodsResponse(true));
 
-        addFoodsResponseMessageTester.test();
+       // addFoodsResponseMessageTester.test();
 
 
     }

@@ -10,8 +10,8 @@ import org.apache.avro.generic.GenericRecord;
  */
 public class ShowAllFoodsRequest extends Request {
 
-    public ShowAllFoodsRequest() {
-        super("SHOW_ALL_FOODS_REQUEST");
+    public ShowAllFoodsRequest(String session) {
+        super(session, "SHOW_ALL_FOODS_REQUEST");
     }
 
     public ShowAllFoodsRequest(GenericRecord record) {
@@ -20,6 +20,7 @@ public class ShowAllFoodsRequest extends Request {
 
     @Override
     public void deserialize(GenericRecord record) {
+        this.session = record.get("session").toString();
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
     }
@@ -28,6 +29,8 @@ public class ShowAllFoodsRequest extends Request {
     public GenericRecord serialize() {
 
         GenericRecord record = new GenericData.Record(getSchema());
+
+        record.put("session", session);
         record.put("type", symbol);
 
         return record;

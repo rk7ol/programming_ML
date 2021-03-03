@@ -29,8 +29,8 @@ public class AddFoodsRequest extends Request {
         return ID;
     }
 
-    public AddFoodsRequest(String ID, Food... foods) {
-        super("ADD_FOODS_REQUEST");
+    public AddFoodsRequest(String session, String ID, Food... foods) {
+        super(session, "ADD_FOODS_REQUEST");
         this.ID = ID;
         this.foods = new Foods(foods);
     }
@@ -42,6 +42,7 @@ public class AddFoodsRequest extends Request {
 
     @Override
     public void deserialize(GenericRecord record) {
+        this.session = record.get("session").toString();
 
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
@@ -55,6 +56,8 @@ public class AddFoodsRequest extends Request {
     public GenericRecord serialize() {
 
         GenericRecord record = new GenericData.Record(getSchema());
+
+        record.put("session", session);
 
         record.put("type", symbol);
 

@@ -23,8 +23,8 @@ public abstract class Response extends Message {
     }
 
 
-    protected Response(String symbol){
-        super(symbol);
+    protected Response(String session, String symbol){
+        super(session, symbol);
     }
 
 

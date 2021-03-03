@@ -39,6 +39,8 @@ public class Receiver {
 
         consumer.subscribe(Arrays.asList(topics));
 
+
+
     }
 
 

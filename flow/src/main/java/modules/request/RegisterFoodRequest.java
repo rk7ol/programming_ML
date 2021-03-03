@@ -36,8 +36,8 @@ public class RegisterFoodRequest extends Request {
     }
 
 
-    public RegisterFoodRequest(String name, String method, double price) {
-        super("REGISTER_FOOD_REQUEST");
+    public RegisterFoodRequest(String session, String name, String method, double price) {
+        super(session, "REGISTER_FOOD_REQUEST");
         this.name = name;
         this.method = method;
         this.price = price;
@@ -49,6 +49,8 @@ public class RegisterFoodRequest extends Request {
 
     @Override
     public void deserialize(GenericRecord record) {
+
+        this.session = record.get("session").toString();
 
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
@@ -62,6 +64,8 @@ public class RegisterFoodRequest extends Request {
     public GenericRecord serialize() {
 
         GenericRecord record = new GenericData.Record(getSchema());
+
+        record.put("session", session);
 
         record.put("type", symbol);
 

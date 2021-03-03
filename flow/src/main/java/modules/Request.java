@@ -20,8 +20,8 @@ public abstract class Request extends Message {
         }
     }
 
-    protected Request(String symbol){
-        super(symbol);
+    protected Request(String session, String symbol){
+        super(session, symbol);
     }
 
 

@@ -18,8 +18,8 @@ public class RegisterWindowResponse extends Response {
         return ID;
     }
 
-    public RegisterWindowResponse(String ID) {
-        super("REGISTER_WINDOW_RESPONSE");
+    public RegisterWindowResponse(String session, String ID) {
+        super(session, "REGISTER_WINDOW_RESPONSE");
         this.ID = ID;
     }
 
@@ -30,7 +30,7 @@ public class RegisterWindowResponse extends Response {
 
     @Override
     public void deserialize(GenericRecord record) {
-
+        this.session = record.get("session").toString();
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
         this.ID = record.get("ID").toString();
@@ -40,7 +40,7 @@ public class RegisterWindowResponse extends Response {
     @Override
     public GenericRecord serialize() {
         GenericRecord record = new GenericData.Record(getSchema());
-
+        record.put("session", session);
         record.put("type", symbol);
 
         record.put("ID", ID);

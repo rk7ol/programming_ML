@@ -23,8 +23,8 @@ public class ShowAllFoodsResponse extends Response {
     }
 
 
-    public ShowAllFoodsResponse(Food... foods) {
-        super("SHOW_ALL_FOODS_RESPONSE");
+    public ShowAllFoodsResponse(String session, Food... foods) {
+        super(session, "SHOW_ALL_FOODS_RESPONSE");
         this.foods = new Foods(foods);
 
     }
@@ -38,7 +38,7 @@ public class ShowAllFoodsResponse extends Response {
     @Override
     public void deserialize(GenericRecord record) {
 
-
+        this.session = record.get("session").toString();
         //get enum
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
@@ -49,15 +49,15 @@ public class ShowAllFoodsResponse extends Response {
 
     @Override
     public GenericRecord serialize() {
-        GenericRecord foodsRecord = new GenericData.Record(getSchema());
-
+        GenericRecord record = new GenericData.Record(getSchema());
+        record.put("session", session);
         //put enum
-        foodsRecord.put("type", this.symbol);
+        record.put("type", this.symbol);
 
-        foodsRecord.put("foods", foods.serialize());
+        record.put("foods", foods.serialize());
 
 
-        return foodsRecord;
+        return record;
     }
 
     @Override

@@ -20,8 +20,8 @@ public class RegisterWindowRequest extends Request {
         return foods.getContent();
     }
 
-    public RegisterWindowRequest(Food... foods) {
-        super("REGISTER_WINDOW_REQUEST");
+    public RegisterWindowRequest(String session, Food... foods) {
+        super(session, "REGISTER_WINDOW_REQUEST");
         this.foods = new Foods(foods);
     }
 
@@ -32,7 +32,7 @@ public class RegisterWindowRequest extends Request {
 
     @Override
     public void deserialize(GenericRecord record) {
-
+        this.session = record.get("session").toString();
         this.symbol = (GenericData.EnumSymbol) record.get("type");
 
         this.foods = new Foods((GenericRecord) record.get("foods"));
@@ -43,7 +43,7 @@ public class RegisterWindowRequest extends Request {
     public GenericRecord serialize() {
 
         GenericRecord record = new GenericData.Record(getSchema());
-
+        record.put("session", session);
         record.put("type", symbol);
 
         record.put("foods", foods.serialize());
