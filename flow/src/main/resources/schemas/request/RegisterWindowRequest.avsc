@@ -3,6 +3,10 @@
   "name": "RegisterWindowRequest",
   "fields": [
     {
+      "name": "session",
+      "type": "string"
+    },
+    {
       "name": "type",
       "type": {
         "type": "enum",

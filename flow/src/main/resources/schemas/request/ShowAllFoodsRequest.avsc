@@ -3,6 +3,10 @@
   "name": "ShowAllFoodsRequest",
   "fields": [
     {
+      "name": "session",
+      "type": "string"
+    },
+    {
       "name": "type",
       "type": {
         "type": "enum",
