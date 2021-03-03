@@ -2,15 +2,18 @@ package send;
 
 import flow.MessageManager;
 import modules.Food;
+import modules.Foods;
 import modules.Request;
-import modules.request.AddFoodsRequest;
-import modules.request.RegisterFoodRequest;
+import modules.request.*;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisConnectionException;
-import send.sessions.BooleanSession;
-import send.sessions.Session;
+import send.sessions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,11 +27,46 @@ public class Dispatcher {
         void call(T result);
     }
 
+    public static void saveResponse(String sessionID, String value) {
+
+        saveResponseByBytes(sessionID, value.getBytes(StandardCharsets.UTF_8));
+
+    }
+
+    public static void saveResponse(String sessionID, double value) {
+
+        objectSerialize(sessionID, value);
+
+
+    }
+
+    public static void saveResponse(String sessionID, Foods value) {
+
+        objectSerialize(sessionID, value);
+
+    }
+
     public static void saveResponse(String sessionID, boolean value) {
 
         saveResponseByBytes(sessionID, new byte[]{(byte) (value ? 1 : 0)});
 
     }
+
+    private static void objectSerialize(String sessionID, Serializable value) {
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
+
+            objectOutputStream.writeObject(value);
+
+            saveResponseByBytes(sessionID, out.toByteArray());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     private static void saveResponseByBytes(String sessionID, byte[] bytes) {
 
@@ -39,7 +77,6 @@ public class Dispatcher {
             System.err.println(e.getMessage());
         }
 
-
     }
 
 
@@ -47,7 +84,6 @@ public class Dispatcher {
 
 
         public void sendRequest(Request request, Session<T> session, Callback<T> callback) {
-
 
             MessageManager.sendMessage(request);
 
@@ -127,10 +163,13 @@ public class Dispatcher {
     static {
         senderMap = new HashMap<>();
 
-        senderMap.put(AddFoodsRequest.class, new RequestSender<Boolean>());
-
         senderMap.put(RegisterFoodRequest.class, new RequestSender<Boolean>());
-
+        senderMap.put(AddFoodsRequest.class, new RequestSender<Boolean>());
+        senderMap.put(RegisterWindowRequest.class, new RequestSender<String>());
+        senderMap.put(ShowWindowFoodsRequest.class, new RequestSender<Foods>());
+        senderMap.put(ShowAllFoodsRequest.class, new RequestSender<Foods>());
+        senderMap.put(SellFoodRequest.class, new RequestSender<Double>());
+        senderMap.put(SettleRequest.class, new RequestSender<Double>());
     }
 
 
@@ -165,27 +204,50 @@ public class Dispatcher {
     }
 
     //注册卡机
-    public static void sendRegisterWindowRequest(Callback<Boolean> callback, Food... foods) {
-        //MessageManager.sendMessage(new RegisterWindowRequest(foods));
+    public static void sendRegisterWindowRequest(Callback<String> callback, Food... foods) {
+
+        RequestSender<String> sender = (RequestSender<String>) getRequestSender(RegisterFoodRequest.class);
+
+        StringSession session = new StringSession();
+
+        sender.sendRequest(new RegisterWindowRequest(session.getID(), foods), session, callback);
+
+
     }
 
     //菜品交易，服务器进行结算
-    public static void sendSellFoodRequest(Callback<Boolean> callback, String ID, Food... foods) {
-        // MessageManager.sendMessage(new SellFoodRequest(ID, foods));
+    public static void sendSellFoodRequest(Callback<Double> callback, String ID, Food... foods) {
+        RequestSender<Double> sender = (RequestSender<Double>) getRequestSender(RegisterFoodRequest.class);
+
+        DoubleSession session = new DoubleSession();
+
+        sender.sendRequest(new SellFoodRequest(session.getID(), ID, foods), session, callback);
     }
 
     //营业额结算
-    public static void sendRegisterSettleRequest(Callback<Boolean> callback, String ID) {
-        //MessageManager.sendMessage(new SettleRequest(ID));
+    public static void sendSettleRequest(Callback<Double> callback, String ID) {
+        RequestSender<Double> sender = (RequestSender<Double>) getRequestSender(RegisterFoodRequest.class);
+
+        DoubleSession session = new DoubleSession();
+
+        sender.sendRequest(new SettleRequest(session.getID(), ID), session, callback);
     }
 
     //显示所有菜品
-    public static void sendShowAllFoodsRequest(Callback<Boolean> callback) {
-        //MessageManager.sendMessage(new ShowAllFoodsRequest());
+    public static void sendShowAllFoodsRequest(Callback<Foods> callback) {
+        RequestSender<Foods> sender = (RequestSender<Foods>) getRequestSender(RegisterFoodRequest.class);
+
+        FoodsSession session = new FoodsSession();
+
+        sender.sendRequest(new ShowAllFoodsRequest(session.getID()), session, callback);
     }
 
     //显示卡机菜品
-    public static void sendShowAllWindowFoodsRequest(Callback<Boolean> callback) {
-        //MessageManager.sendMessage(new ShowWindowFoodsRequest(ID));
+    public static void sendShowWindowFoodsRequest(Callback<Foods> callback, String ID) {
+        RequestSender<Foods> sender = (RequestSender<Foods>) getRequestSender(RegisterFoodRequest.class);
+
+        FoodsSession session = new FoodsSession();
+
+        sender.sendRequest(new ShowWindowFoodsRequest(session.getID(), ID), session, callback);
     }
 }
