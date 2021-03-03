@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -39,6 +40,14 @@ public class Dispatcher {
 
 
     }
+
+
+    public static void saveResponse(String sessionID, List<Food> value) {
+
+        saveResponse(sessionID, new Foods(value));
+
+    }
+
 
     public static void saveResponse(String sessionID, Foods value) {
 
