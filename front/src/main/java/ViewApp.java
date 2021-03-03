@@ -9,9 +9,9 @@ public class ViewApp extends Application {
 
     Scene scene0;//输入卡机，弹出窗口 //Start.fxml
     Scene scene1;//显示菜品，并且能添加菜品 //MainPage.fxml
-    Scene scene2;//注册菜品 //register.fxml
+    Scene scene2;//注册菜品 //RegisterFood.fxml
     Scene scene3;//注册卡机 //RegisterID.fxml
-    Scene scene4;//返回卡机id //ID.fxml
+    Scene scene4;//返回卡机id //OutputID.fxml
     Scene scene5;//营业额结算 //Account.fxml
     Scene scene6;//交易页面  //TradePage.fxml
 
@@ -41,7 +41,7 @@ public class ViewApp extends Application {
         scene1 = new Scene(page1);//显示菜品，添加菜品
 
 
-        FXMLLoader loader2 = new FXMLLoader(Starter.class.getResource("views/register.fxml"));
+        FXMLLoader loader2 = new FXMLLoader(Starter.class.getResource("views/RegisterFood.fxml"));
         AnchorPane page2 = loader2.load();
         scene2 = new Scene(page2);//注册菜品
 
@@ -49,7 +49,7 @@ public class ViewApp extends Application {
         AnchorPane page3 = loader3.load();
         scene3 = new Scene(page3);//注册卡机id
 
-        FXMLLoader loader4 = new FXMLLoader(Starter.class.getResource("views/ID.fxml"));
+        FXMLLoader loader4 = new FXMLLoader(Starter.class.getResource("views/OutputID.fxml"));
         AnchorPane page4 = loader4.load();
         scene4 = new Scene(page4);//卡机id
 

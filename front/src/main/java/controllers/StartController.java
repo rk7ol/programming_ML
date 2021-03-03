@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class Start {
+public class StartController {
     Scene scene1;
     Scene scene3;
     Stage stage;

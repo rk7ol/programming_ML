@@ -7,21 +7,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import send.Dispatcher;
 
-public class RegisterController {
+public class RegisterFoodController {
     @FXML
-    private Button buttonRegister;
+    private static Button buttonRegister;
+    @FXML
+    private static Button buttonCancel;
+    @FXML
+    private static TextField textfield1;
+    @FXML
+    private static TextField textfield2;
+    @FXML
+    private static TextField textfield3;
 
+    /*//菜品名称
     @FXML
-    private TextField textfield1;
-
-    @FXML
-    private TextField textfield2;
-
-    @FXML
-    private TextField textfield3;
-
-    @FXML
-    //菜品名称
     private void register1() {
     }
 
@@ -33,11 +32,11 @@ public class RegisterController {
     @FXML
     //价格
     private void register3() {
-    }
+    }*/
 
     @FXML
     //注册菜品按钮
-    private void eventRegisterclick()
+    private void EventRegistercClick()
     {
         System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
         Dispatcher.sendRegisterFoodRequest(new Dispatcher.Callback<Boolean>() {
@@ -49,6 +48,13 @@ public class RegisterController {
 
             }
         }, textfield1.getText(), textfield2.getText(), textfield3.getText());
+    }
+    @FXML
+    private  void eventCancelClick()
+    {
+        textfield1.setText("");
+        textfield2.setText("");
+        textfield3.setText("");
     }
 }
 

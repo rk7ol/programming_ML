@@ -9,8 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modules.Food;
-import send.send;
-
+import send.Dispatcher;
 
 
 public class MainPageController{
@@ -20,8 +19,22 @@ public class MainPageController{
     Scene scene3;
     Scene scene4;
     Scene scene5;
-
     Stage stage;
+
+    @FXML
+    private Button buttonAdd;
+    @FXML
+    private Button button0;
+    @FXML
+    private Button button1;
+    @FXML
+    private ComboBox<Food> Combobox;
+    @FXML
+    private TextField textfield1;
+    @FXML
+    private TextField textfield2;
+    @FXML
+    private TextField textfield3;
 
     public void receive(Scene scene1, Scene scene2, Scene scene3, Scene scene4,Scene scene5, Stage stage){
         this.scene1=scene1;
@@ -39,26 +52,11 @@ public class MainPageController{
     }
 
 
-    @FXML
-    private Button buttonAdd;
-
-    @FXML
-    private Button button0;
-
-    @FXML
-    private Button button1;
-
-    @FXML
-    private ComboBox<Food> Combobox;
-
-    @FXML
-    private TextField textfield1;
-
-    @FXML
-    private TextField textfield2;
-
-    @FXML
-    private TextField textfield3;
+    //发送请求获取本机菜品
+    public MainPageController() {
+        //String id = "";
+        //send.sendShowAllWindowFoodsRequest(id);
+    }
 
     @FXML
     //确认所选择菜品
@@ -81,7 +79,12 @@ public class MainPageController{
     private void eventAddclick()
     {
         System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
-        send.sendRegisterFoodRequest(textfield1.getText(),textfield2.getText(),textfield3.getText());
+        Dispatcher.sendRegisterFoodRequest(new Dispatcher.Callback<Boolean>() {
+            @Override
+            public void call(Boolean result) {
+                //写点啥？
+            }
+        },textfield1.getText(), textfield2.getText(), textfield3.getText());
     }
 
     @FXML
