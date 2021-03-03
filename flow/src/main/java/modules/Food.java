@@ -4,6 +4,8 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import utils.avro.AvroUnit;
 
+import java.io.Serializable;
+
 /**
  * string ID
  * <p>
@@ -13,7 +15,7 @@ import utils.avro.AvroUnit;
  * <p>
  * string method
  */
-public class Food extends AvroUnit {
+public class Food extends AvroUnit implements Serializable {
 
 
     private String ID;
@@ -105,4 +107,6 @@ public class Food extends AvroUnit {
                 ", price=" + price +
                 '}';
     }
+
+
 }

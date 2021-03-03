@@ -7,11 +7,14 @@ import org.apache.avro.generic.GenericRecord;
 import utils.avro.AvroUnit;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Foods extends AvroUnit {
+public class Foods extends AvroUnit implements Serializable {
 
     private List<Food> content;
 
@@ -36,12 +39,12 @@ public class Foods extends AvroUnit {
         this.content = content;
     }
 
-    public Foods(Food ... foods){
+    public Foods(Food... foods) {
         this.content = new ArrayList<>(foods.length);
         this.content.addAll(Arrays.asList(foods));
     }
 
-    public Foods(GenericRecord record){
+    public Foods(GenericRecord record) {
         super(record);
     }
 
@@ -53,7 +56,7 @@ public class Foods extends AvroUnit {
 
         this.content = new ArrayList<>(foodArray.size());
 
-        for (GenericRecord foodRecord : foodArray){
+        for (GenericRecord foodRecord : foodArray) {
             content.add(new Food(foodRecord));
         }
 
@@ -82,4 +85,20 @@ public class Foods extends AvroUnit {
         registerSchema(this.getClass(), "schemas/FoodsRecord.avsc");
 
     }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+
+
+        out.writeObject(content);
+
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+        this.content = (List<Food>) in.readObject();
+
+
+    }
+
+
 }
