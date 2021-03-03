@@ -22,7 +22,7 @@ public class SettleRequestHandler extends MessageHandler<SettleRequest> {
                     totalLS+=ls_ovList.get(i).getPrice();
                 }
             }
-            MessageManager.sendMessage(new SettleResponse("",totalLS));
+            MessageManager.sendMessage(new SettleResponse(message.getSession(),totalLS));
         } catch (Exception e) {
             e.printStackTrace();
         }

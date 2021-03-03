@@ -33,7 +33,7 @@ public class RegisterWindowRequestHandler extends MessageHandler<RegisterWindowR
             for (int i = 0; i < foodList.size(); i++) {
                 KC_OV kc_ov = new KC_OV(foodList.get(i).getID(), ID);
             }
-            MessageManager.sendMessage(new RegisterWindowResponse("",ID));
+            MessageManager.sendMessage(new RegisterWindowResponse(message.getSession(),ID));
             KJ_Table kj_table=new KJ_Table();
             KJ_OV kj_ov=new KJ_OV();
             kj_ov.setID(ID);

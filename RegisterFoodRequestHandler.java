@@ -24,7 +24,7 @@ public class RegisterFoodRequestHandler extends MessageHandler<RegisterFoodReque
         } catch (Exception e) {
             e.printStackTrace();
         }
-        MessageManager.sendMessage(new RegisterFoodResponse("",flag));
+        MessageManager.sendMessage(new RegisterFoodResponse(message.getSession(),flag));
         return true;
     }
 }

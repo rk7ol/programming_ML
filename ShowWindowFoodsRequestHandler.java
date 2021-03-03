@@ -39,7 +39,7 @@ public class ShowWindowFoodsRequestHandler extends MessageHandler<ShowWindowFood
             for (int i = 0; i < foodList.size(); i++) {
                 foods[i]=foodList.get(i);
             }
-            MessageManager.sendMessage(new ShowWindowFoodsResponse("",foods));
+            MessageManager.sendMessage(new ShowWindowFoodsResponse(message.getSession(),foods));
         } catch (Exception e) {
             e.printStackTrace();
         }
