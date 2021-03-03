@@ -2,9 +2,10 @@ package controllers;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import send.send;
+import send.Dispatcher;
 
 public class RegisterController {
     @FXML
@@ -39,7 +40,15 @@ public class RegisterController {
     private void eventRegisterclick()
     {
         System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
-        send.sendRegisterFoodRequest(textfield1.getText(),textfield2.getText(),textfield3.getText());
+        Dispatcher.sendRegisterFoodRequest(new Dispatcher.Callback<Boolean>() {
+            @Override
+            public void call(Boolean result) {
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.show();
+
+            }
+        }, textfield1.getText(), textfield2.getText(), textfield3.getText());
     }
 }
 
