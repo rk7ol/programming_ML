@@ -3,14 +3,14 @@ package Database.OV;
 public class  LS_OV {//流水表的映射
     private String ID = "";//流水ID
     private String C_ID = "";//卡机ID
-    private int Price;//总售价
+    private double Price;//总售价
 
     public LS_OV() {
     }
 
     ;
 
-    public LS_OV(String id, String c_id, int price) {
+    public LS_OV(String id, String c_id, double price) {
         this.ID = id;
         this.C_ID = c_id;
         this.Price = price;
@@ -24,7 +24,7 @@ public class  LS_OV {//流水表的映射
         return C_ID;
     }
 
-    public int getPrice() {//获取售卖价格
+    public double getPrice() {//获取售卖价格
         return Price;
     }
 
@@ -36,7 +36,7 @@ public class  LS_OV {//流水表的映射
         this.C_ID = c_id;
     }
 
-    public void setPrice(int price) {//设置价格
+    public void setPrice(double price) {//设置价格
         Price = price;
     }
 }//流水表的映射(提供get,set)

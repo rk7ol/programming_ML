@@ -30,7 +30,7 @@ public class SellFoodRequestHandler extends MessageHandler<SellFoodRequest> {
 
                 }
             }
-            MessageManager.sendMessage(new SellFoodResponse(totalPrice));
+            MessageManager.sendMessage(new SellFoodResponse(message.getSession(),totalPrice));
             LS_OV ls_ov=new LS_OV();
             ls_ov.setID(getUUID32());
             ls_ov.setC_ID(message.getID());
