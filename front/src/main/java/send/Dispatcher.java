@@ -165,27 +165,27 @@ public class Dispatcher {
     }
 
     //注册卡机
-    public static void sendRegisterWindowRequest(Food... foods) {
+    public static void sendRegisterWindowRequest(Callback<Boolean> callback, Food... foods) {
         //MessageManager.sendMessage(new RegisterWindowRequest(foods));
     }
 
     //菜品交易，服务器进行结算
-    public static void sendSellFoodRequest(String ID, Food... foods) {
+    public static void sendSellFoodRequest(Callback<Boolean> callback, String ID, Food... foods) {
         // MessageManager.sendMessage(new SellFoodRequest(ID, foods));
     }
 
     //营业额结算
-    public static void sendRegisterSettleRequest(String ID) {
+    public static void sendRegisterSettleRequest(Callback<Boolean> callback, String ID) {
         //MessageManager.sendMessage(new SettleRequest(ID));
     }
 
     //显示所有菜品
-    public static void sendShowAllFoodsRequest() {
+    public static void sendShowAllFoodsRequest(Callback<Boolean> callback) {
         //MessageManager.sendMessage(new ShowAllFoodsRequest());
     }
 
     //显示卡机菜品
-    public static void sendShowAllWindowFoodsRequest(String ID) {
+    public static void sendShowAllWindowFoodsRequest(Callback<Boolean> callback) {
         //MessageManager.sendMessage(new ShowWindowFoodsRequest(ID));
     }
 }
