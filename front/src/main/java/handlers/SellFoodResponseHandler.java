@@ -1,6 +1,6 @@
 package handlers;
 
-/*import flow.handlers.MessageHandler;
+import flow.handlers.MessageHandler;
 import modules.response.SellFoodResponse;
 
 //菜品交易，返回价格结算
@@ -10,4 +10,4 @@ public class SellFoodResponseHandler extends MessageHandler<SellFoodResponse> {
         double price=message.getTotallyPrice();
         return true;
     }
-}*/
+}
