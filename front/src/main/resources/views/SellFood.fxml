@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="389.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SellFoodController">
+   <children>
+      <Button fx:id="buttonConfirmTrade" layoutX="424.0" layoutY="305.0" mnemonicParsing="false" onAction="#buttonConfirmTradeAction" prefHeight="36.0" prefWidth="78.0" text="确 认" />
+      <Text layoutX="33.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="交易页面">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="交易金额：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="money" layoutX="157.0" layoutY="304.0" prefHeight="37.0" prefWidth="242.0" />
+      <Text fx:id="text1" layoutX="217.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选择菜品">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="buttonRefreshFood" layoutX="149.0" layoutY="65.0" mnemonicParsing="false" onAction="#buttonRefeshFoodAction" prefHeight="36.0" prefWidth="100.0" text="刷新菜品">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <FlowPane fx:id="flowPane" layoutX="41.0" layoutY="108.0" prefHeight="170.0" prefWidth="482.0" />
+   </children>
+</AnchorPane>

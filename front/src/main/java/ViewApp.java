@@ -8,12 +8,11 @@ import javafx.stage.Stage;
 public class ViewApp extends Application {
 
     Scene scene0;//输入卡机，弹出窗口 //Start.fxml
-    Scene scene1;//显示菜品，并且能添加菜品 //MainPage.fxml
+    Scene scene1;//显示菜品，并且能添加菜品 //AddFoods.fxml
     Scene scene2;//注册菜品 //RegisterFood.fxml
-    Scene scene3;//注册卡机 //RegisterID.fxml
-    Scene scene4;//返回卡机id //OutputID.fxml
-    Scene scene5;//营业额结算 //Account.fxml
-    Scene scene6;//交易页面  //TradePage.fxml
+    Scene scene3;//注册卡机 //RegisterWindow.fxml
+    Scene scene5;//营业额结算 //Settle.fxml
+    Scene scene6;//交易页面  //SellFood.fxml
 
 
     @Override
@@ -36,7 +35,7 @@ public class ViewApp extends Application {
         scene0 = new Scene(page0);//开始界面
 
 
-        FXMLLoader loader1 = new FXMLLoader(Starter.class.getResource("views/MainPage.fxml"));
+        FXMLLoader loader1 = new FXMLLoader(Starter.class.getResource("views/AddFoods.fxml"));
         AnchorPane page1 = loader1.load();
         scene1 = new Scene(page1);//显示菜品，添加菜品
 
@@ -45,19 +44,15 @@ public class ViewApp extends Application {
         AnchorPane page2 = loader2.load();
         scene2 = new Scene(page2);//注册菜品
 
-        FXMLLoader loader3 = new FXMLLoader(Starter.class.getResource("views/RegisterID.fxml"));
+        FXMLLoader loader3 = new FXMLLoader(Starter.class.getResource("views/RegisterWindow.fxml"));
         AnchorPane page3 = loader3.load();
         scene3 = new Scene(page3);//注册卡机id
 
-        FXMLLoader loader4 = new FXMLLoader(Starter.class.getResource("views/OutputID.fxml"));
-        AnchorPane page4 = loader4.load();
-        scene4 = new Scene(page4);//卡机id
-
-        FXMLLoader loader5 = new FXMLLoader(Starter.class.getResource("views/Account.fxml"));
+        FXMLLoader loader5 = new FXMLLoader(Starter.class.getResource("views/Settle.fxml"));
         AnchorPane page5 = loader5.load();
         scene5 = new Scene(page5);//营业额
 
-        FXMLLoader loader6 = new FXMLLoader(Starter.class.getResource("views/TradePage.fxml"));
+        FXMLLoader loader6 = new FXMLLoader(Starter.class.getResource("views/SellFood.fxml"));
         AnchorPane page6 = loader6.load();
         scene6 = new Scene(page6);//交易页面
 
@@ -66,6 +61,7 @@ public class ViewApp extends Application {
         controller.addPage("选择添加菜品", page1);
         controller.addPage("注册新菜品", page2);
         controller.addPage("注册新卡机", page3);
+        controller.addPage("营业额结算", page5);
         //controller.addPage("卡机id登录", page);
 
 

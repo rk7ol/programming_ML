@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="text1" prefHeight="515.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
+<AnchorPane fx:id="text1" prefHeight="515.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddFoodsController">
    <children>
-      <Button fx:id="buttonAdd" layoutX="60.0" layoutY="394.0" mnemonicParsing="false" onAction="#eventAddclick" prefHeight="36.0" prefWidth="112.0" text="添加菜品" />
+      <Button fx:id="buttonConfirmAdd" layoutX="310.0" layoutY="403.0" mnemonicParsing="false" onAction="#eventbuttonConfirmAddclick" prefHeight="36.0" prefWidth="112.0" text="确定添加" />
       <GridPane layoutX="61.0" layoutY="108.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -25,24 +25,23 @@
          </rowConstraints>
       </GridPane>
       <Pane layoutX="353.0" layoutY="108.0" />
-      <Button fx:id="button1" layoutX="353.0" layoutY="394.0" mnemonicParsing="false" onAction="#button1ClickEvent" prefHeight="36.0" prefWidth="83.0" text="取消" />
       <Text layoutX="63.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="添加菜品" wrappingWidth="209.0">
          <font>
             <Font size="20.0" />
          </font></Text>
-      <TextField fx:id="textfield1" layoutX="167.0" layoutY="212.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="textfieldfoodname" layoutX="167.0" layoutY="212.0" prefHeight="36.0" prefWidth="255.0" />
       <Accordion layoutX="2.0" />
       <Text layoutX="62.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="菜品名称：" />
       <Text layoutX="62.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="销售方式：" />
       <Text layoutX="62.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="价格：" />
-      <TextField fx:id="textfield2" layoutX="167.0" layoutY="271.0" prefHeight="36.0" prefWidth="255.0" />
-      <TextField fx:id="textfield3" layoutX="167.0" layoutY="326.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="textfieldmethod" layoutX="167.0" layoutY="271.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="textfieldprice" layoutX="167.0" layoutY="326.0" prefHeight="36.0" prefWidth="255.0" />
       <Text layoutX="60.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选择菜品" wrappingWidth="150.3603515625">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Button fx:id="button0" layoutX="353.0" layoutY="90.0" mnemonicParsing="false" onAction="#yes" prefHeight="36.0" prefWidth="83.0" text="确认" />
-      <ComboBox fx:id="Combobox" editable="true" layoutX="62.0" layoutY="90.0" prefHeight="36.0" prefWidth="269.0" promptText="请选择菜品" />
+      <Button fx:id="buttonShowFood" layoutX="353.0" layoutY="90.0" mnemonicParsing="false" onAction="#eventButtonShowFoodClick" prefHeight="36.0" prefWidth="83.0" text="查询" />
+      <ComboBox fx:id="Combobox" editable="true" layoutX="62.0" layoutY="90.0" onAction="#eventComboBoxClick" prefHeight="36.0" prefWidth="269.0" promptText="请选择菜品" />
    </children>
 </AnchorPane>
