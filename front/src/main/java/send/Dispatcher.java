@@ -28,6 +28,10 @@ public class Dispatcher {
         void call(T result);
     }
 
+    private static Jedis getJedisConnect(String host, int port){
+        return new Jedis(host, port);
+    }
+
     public static void saveResponse(String sessionID, String value) {
 
         saveResponseByBytes(sessionID, value.getBytes(StandardCharsets.UTF_8));
@@ -98,13 +102,13 @@ public class Dispatcher {
 
             while (true) {
 
-                setSessionValue(session);
+                setSessionValue(jedis, session);
 
                 if (isSessionDone(session)) {
                     callback.call(session.getValue());
 
 
-                    if (destroySession(session)) {
+                    if (destroySession(jedis, session)) {
                         break;
                     } else {
                         throw new IllegalStateException("session destroy failed");
@@ -118,26 +122,11 @@ public class Dispatcher {
 
 
         /**
-         * save session
-         *
-         * @param session
-         * @return
-         */
-        private static boolean startSession(Session<? extends Serializable> session) {
-            if (isSessionExist(session)) {
-                throw new IllegalStateException("session exist");
-            } else {
-                jedis.set(session.getID().getBytes(), null);
-                return isSessionExist(session);
-            }
-        }
-
-        /**
          * get session value
          *
          * @param session
          */
-        public static void setSessionValue(Session<? extends Serializable> session) {
+        public static void setSessionValue(Jedis jedis, Session<? extends Serializable> session) {
             byte[] bytes = jedis.get(session.getID().getBytes());
 
 
@@ -151,14 +140,14 @@ public class Dispatcher {
             return session.getValue() != null;
         }
 
-        private static boolean destroySession(Session<? extends Serializable> session) {
+        private static boolean destroySession(Jedis jedis, Session<? extends Serializable> session) {
 
             jedis.del(session.getID().getBytes());
 
-            return !isSessionExist(session);
+            return !isSessionExist(jedis, session);
         }
 
-        private static Boolean isSessionExist(Session<? extends Serializable> session) {
+        private static Boolean isSessionExist(Jedis jedis, Session<? extends Serializable> session) {
             return jedis.exists(session.getID().getBytes());
         }
 
