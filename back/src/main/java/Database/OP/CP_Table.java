@@ -69,7 +69,7 @@ public class CP_Table implements DB<CP_OV> {
             row.setID(rs.getString("菜品ID"));
             row.setName(rs.getString("菜品名称"));
             row.setWay(rs.getString("售卖方式"));
-            row.setPrice(Integer.parseInt(rs.getString("价格")));
+            row.setPrice(Double.parseDouble(rs.getString("价格")));
             list.add(row);
         }
         // 完成后关闭

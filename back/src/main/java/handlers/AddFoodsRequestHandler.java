@@ -23,7 +23,7 @@ public class AddFoodsRequestHandler extends MessageHandler<AddFoodsRequest> {
                 flag = kc_table.insert(kc_ov);
                 if (flag == false) break;
             }
-            MessageManager.sendMessage(new AddFoodsResponse(flag));
+            MessageManager.sendMessage(new AddFoodsResponse(message.getSession(),flag));
         } catch (Exception e) {
             e.printStackTrace();
         }

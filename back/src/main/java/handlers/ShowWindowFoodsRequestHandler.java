@@ -16,7 +16,7 @@ public class ShowWindowFoodsRequestHandler extends MessageHandler<ShowWindowFood
     @Override
     public boolean handle(ShowWindowFoodsRequest message) {
         List<KC_OV> kc_ovList;
-        List<Food> foodList;
+        List<Food> foodList=null;
         try {
             String ID=message.getID();
             KC_Table kc_table=new KC_Table();
@@ -29,7 +29,7 @@ public class ShowWindowFoodsRequestHandler extends MessageHandler<ShowWindowFood
                     for (int j = 0; j < cp_ovList.size(); j++) {
                         CP_OV cp_ov=cp_ovList.get(j);
                         if(cp_ov.getID().equals(kc_ov.getC_ID())){
-                            Food food=new Food(cp_ov.getID(),cp_ov.getName(),cp_ov.getWay(),cp_ov.getPrice());
+                            Food food=new Food(cp_ov.getID(),cp_ov.getName(),cp_ov.getPrice(),cp_ov.getWay());
                             foodList.add(food);
                         }
                     }
@@ -39,7 +39,7 @@ public class ShowWindowFoodsRequestHandler extends MessageHandler<ShowWindowFood
             for (int i = 0; i < foodList.size(); i++) {
                 foods[i]=foodList.get(i);
             }
-            MessageManager.sendMessage(new ShowWindowFoodsResponse(foods));
+            MessageManager.sendMessage(new ShowWindowFoodsResponse(message.getSession(),foods));
         } catch (Exception e) {
             e.printStackTrace();
         }

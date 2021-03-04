@@ -19,14 +19,14 @@ public class ShowAllFoodRequestHandler extends MessageHandler<ShowAllFoodsReques
             List<Food> foodList=null;
             for (int i = 0; i < cp_ovList.size(); i++) {
                 CP_OV cp_ov=cp_ovList.get(i);
-                Food food=new Food(cp_ov.getID(),cp_ov.getName(),cp_ov.getWay(),cp_ov.getPrice());
+                Food food=new Food(cp_ov.getID(),cp_ov.getName(),cp_ov.getPrice(),cp_ov.getWay());
                 foodList.add(food);
             }
             Food[] foods=new Food[foodList.size()];
             for (int i = 0; i < foodList.size(); i++) {
                 foods[i]=foodList.get(i);
             }
-            MessageManager.sendMessage(new ShowWindowFoodsResponse(foods));
+            MessageManager.sendMessage(new ShowWindowFoodsResponse(message.getSession(),foods));
         } catch (Exception e) {
             e.printStackTrace();
         }

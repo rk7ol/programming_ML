@@ -63,7 +63,7 @@ public class LS_Table implements DB<LS_OV> {
             LS_OV row = new LS_OV();//创建映射
             row.setID(rs.getString("流水ID"));
             row.setC_ID(rs.getString("卡机ID"));
-            row.setPrice(Integer.parseInt(rs.getString("总售价")));
+            row.setPrice(Double.parseDouble(rs.getString("总售价")));
             list.add(row);
         }
         // 完成后关闭
