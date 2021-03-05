@@ -10,13 +10,14 @@ import modules.Food;
 import modules.request.ShowWindowFoodsRequest;
 import modules.response.ShowWindowFoodsResponse;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ShowWindowFoodsRequestHandler extends MessageHandler<ShowWindowFoodsRequest> {
     @Override
     public boolean handle(ShowWindowFoodsRequest message) {
         List<KC_OV> kc_ovList;
-        List<Food> foodList=null;
+        List<Food> foodList=new LinkedList<>();
         try {
             String ID=message.getID();
             KC_Table kc_table=new KC_Table();

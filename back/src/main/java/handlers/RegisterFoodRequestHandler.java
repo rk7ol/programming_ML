@@ -18,6 +18,7 @@ public class RegisterFoodRequestHandler extends MessageHandler<RegisterFoodReque
         cp_ov.setName(message.getName());
         cp_ov.setWay(message.getMethod());
         cp_ov.setPrice(message.getPrice());
+        cp_ov.setID(ID);
         try {
             CP_Table cp_table=new CP_Table();
             flag = cp_table.insert(cp_ov);//数据库写入
