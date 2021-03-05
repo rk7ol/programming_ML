@@ -46,12 +46,11 @@ public class SellFoodController {
         }
     }*/
 
-   List<MyChoiceBox> list;
+   List<MyChoiceBox> list = new LinkedList<>();
     @FXML
     private void buttonRefeshFoodAction()
     {
         ///////////////
-        String id = "";
         Dispatcher.sendShowWindowFoodsRequest(new Dispatcher.Callback<Foods>() {
             @Override
             public void call(Foods result) {
@@ -64,7 +63,7 @@ public class SellFoodController {
                     list.add(choiceBox);
                 }
             }
-        },id);
+        },StartController.ID);
     }
 
     @FXML

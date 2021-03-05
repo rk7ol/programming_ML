@@ -34,7 +34,7 @@ public class LS_Table implements DB<LS_OV> {
         stmt = conn.createStatement();
         String sql;
         int rs;
-        sql = "INSERT INTO `流水表` (`流水ID`, `卡机ID`, `总售价`) VALUES (\'" + Table_OV.getID() + "\',\'" + Table_OV.getC_ID() + "\',\'" + Table_OV.getPrice() + "\');";
+        sql = "INSERT INTO `流水表` (`流水ID`, `卡机ID`, `总售价`, `时间`) VALUES (\'" + Table_OV.getID() + "\',\'" + Table_OV.getC_ID() + "\',\'" + Table_OV.getPrice() + "\'"+",\'" + Table_OV.getTime()+"\';";
         try {
             rs = stmt.executeUpdate(sql);
         } catch (Exception e) {//插入失败时
@@ -64,6 +64,7 @@ public class LS_Table implements DB<LS_OV> {
             row.setID(rs.getString("流水ID"));
             row.setC_ID(rs.getString("卡机ID"));
             row.setPrice(Double.parseDouble(rs.getString("总售价")));
+            row.setTime(rs.getString("时间"));
             list.add(row);
         }
         // 完成后关闭

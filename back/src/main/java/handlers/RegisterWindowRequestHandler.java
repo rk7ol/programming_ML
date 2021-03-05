@@ -31,7 +31,8 @@ public class RegisterWindowRequestHandler extends MessageHandler<RegisterWindowR
         try {
             KC_Table kc_table=new KC_Table();
             for (int i = 0; i < foodList.size(); i++) {
-                KC_OV kc_ov = new KC_OV(foodList.get(i).getID(), ID);
+                KC_OV kc_ov = new KC_OV(ID,foodList.get(i).getID());
+                kc_table.insert(kc_ov);
             }
             MessageManager.sendMessage(new RegisterWindowResponse(message.getSession(),ID));
             KJ_Table kj_table=new KJ_Table();
