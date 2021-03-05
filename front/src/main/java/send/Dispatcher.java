@@ -100,6 +100,9 @@ public class Dispatcher {
 
             MessageManager.sendMessage(request);
 
+
+            Jedis jedis = getJedisConnect("dodlee.cn", 6370);
+
             while (true) {
 
                 setSessionValue(jedis, session);
