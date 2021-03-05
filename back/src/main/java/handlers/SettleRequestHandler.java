@@ -18,7 +18,7 @@ public class SettleRequestHandler extends MessageHandler<SettleRequest> {
             List<LS_OV> ls_ovList=ls_table.select();
             double totalLS=0;
             for (int i = 0; i < ls_ovList.size(); i++) {
-                if(ls_ovList.get(i).getID().equals(message)){
+                if(ls_ovList.get(i).getID().equals(message.getID())){
                     totalLS+=ls_ovList.get(i).getPrice();
                 }
             }
