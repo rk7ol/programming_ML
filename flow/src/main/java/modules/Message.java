@@ -65,6 +65,7 @@ public abstract class Message extends AvroUnit {
         addMessageType("SETTLE_REQUEST", (MessageParserUnit<SettleRequest>) SettleRequest::new);
         addMessageType("SHOW_ALL_FOODS_REQUEST", (MessageParserUnit<ShowAllFoodsRequest>) ShowAllFoodsRequest::new);
         addMessageType("SHOW_WINDOW_FOODS_REQUEST", (MessageParserUnit<ShowWindowFoodsRequest>) ShowWindowFoodsRequest::new);
+        addMessageType("DELETE_FOODS_REQUEST", DeleteFoodsRequest::new);
 
 
 
@@ -75,6 +76,7 @@ public abstract class Message extends AvroUnit {
         addMessageType("SETTLE_RESPONSE", (MessageParserUnit<SettleResponse>) SettleResponse::new);
         addMessageType("SHOW_ALL_FOODS_RESPONSE", (MessageParserUnit<ShowAllFoodsResponse>) ShowAllFoodsResponse::new);
         addMessageType("SHOW_WINDOW_FOODS_RESPONSE", (MessageParserUnit<ShowWindowFoodsResponse>) ShowWindowFoodsResponse::new);
+        addMessageType("DELETE_FOODS_RESPONSE", DeleteFoodsResponse::new);
 
 
     }

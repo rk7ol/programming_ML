@@ -35,6 +35,6 @@
          <font>
             <Font size="15.0" />
          </font></Button>
-      <FlowPane fx:id="flowPane" layoutX="41.0" layoutY="108.0" prefHeight="170.0" prefWidth="482.0" />
+      <FlowPane fx:id="foodsPane" layoutX="41.0" layoutY="108.0" prefHeight="170.0" prefWidth="482.0" />
    </children>
 </AnchorPane>

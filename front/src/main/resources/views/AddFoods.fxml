@@ -42,6 +42,6 @@
          </font>
       </Text>
       <Button fx:id="buttonShowFood" layoutX="353.0" layoutY="90.0" mnemonicParsing="false" onAction="#eventButtonShowFoodClick" prefHeight="36.0" prefWidth="83.0" text="查询" />
-      <ComboBox fx:id="Combobox" editable="true" layoutX="62.0" layoutY="90.0" onAction="#eventComboBoxClick" prefHeight="36.0" prefWidth="269.0" promptText="请选择菜品" />
+      <ComboBox fx:id="combobox" editable="true" layoutX="62.0" layoutY="90.0" onAction="#eventComboBoxClick" prefHeight="36.0" prefWidth="269.0" promptText="请选择菜品" />
    </children>
 </AnchorPane>

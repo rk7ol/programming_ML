@@ -171,6 +171,7 @@ public class Dispatcher {
         senderMap.put(ShowAllFoodsRequest.class, new RequestSender<Foods>());
         senderMap.put(SellFoodRequest.class, new RequestSender<Double>());
         senderMap.put(SettleRequest.class, new RequestSender<Double>());
+        senderMap.put(DeleteFoodsRequest.class, new RequestSender<Boolean>());
     }
 
 
@@ -218,7 +219,7 @@ public class Dispatcher {
 
     //菜品交易，服务器进行结算
     public static void sendSellFoodRequest(Callback<Double> callback, String ID, Food... foods) {
-        RequestSender<Double> sender = (RequestSender<Double>) getRequestSender(RegisterFoodRequest.class);
+        RequestSender<Double> sender = (RequestSender<Double>) getRequestSender(SellFoodRequest.class);
 
         DoubleSession session = new DoubleSession();
 
@@ -227,7 +228,7 @@ public class Dispatcher {
 
     //营业额结算
     public static void sendSettleRequest(Callback<Double> callback, String ID) {
-        RequestSender<Double> sender = (RequestSender<Double>) getRequestSender(RegisterFoodRequest.class);
+        RequestSender<Double> sender = (RequestSender<Double>) getRequestSender(SettleRequest.class);
 
         DoubleSession session = new DoubleSession();
 
@@ -236,7 +237,7 @@ public class Dispatcher {
 
     //显示所有菜品
     public static void sendShowAllFoodsRequest(Callback<Foods> callback) {
-        RequestSender<Foods> sender = (RequestSender<Foods>) getRequestSender(RegisterFoodRequest.class);
+        RequestSender<Foods> sender = (RequestSender<Foods>) getRequestSender(ShowAllFoodsRequest.class);
 
         FoodsSession session = new FoodsSession();
 
@@ -245,10 +246,19 @@ public class Dispatcher {
 
     //显示卡机菜品
     public static void sendShowWindowFoodsRequest(Callback<Foods> callback, String ID) {
-        RequestSender<Foods> sender = (RequestSender<Foods>) getRequestSender(RegisterFoodRequest.class);
+        RequestSender<Foods> sender = (RequestSender<Foods>) getRequestSender(ShowWindowFoodsRequest.class);
 
         FoodsSession session = new FoodsSession();
 
         sender.sendRequest(new ShowWindowFoodsRequest(session.getID(), ID), session, callback);
+    }
+
+    //显示卡机菜品
+    public static void sendDeleteFoodsRequest(Callback<Boolean> callback, Food... foods) {
+        RequestSender<Boolean> sender = (RequestSender<Boolean>) getRequestSender(DeleteFoodsRequest.class);
+
+        BooleanSession session = new BooleanSession();
+
+        sender.sendRequest(new DeleteFoodsRequest(session.getID(), foods), session, callback);
     }
 }

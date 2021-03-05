@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "DeleteFoodsResponse",
+  "fields": [
+    {
+      "name": "session",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "responseValue",
+        "symbols": [
+          "DELETE_FOODS_RESPONSE"
+        ]
+      }
+    },
+    {
+      "name": "flag",
+      "type": "boolean"
+    }
+  ]
+}
