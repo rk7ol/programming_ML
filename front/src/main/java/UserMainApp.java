@@ -1,13 +1,10 @@
 import flow.MessageManager;
 import handlers.*;
 import javafx.application.Application;
-import modules.Message;
 import modules.Response;
 import modules.response.*;
 
-import java.util.UUID;
-
-public class MainApp {
+public class UserMainApp {
 
     public  static void main(String[] args) {
 
@@ -23,7 +20,7 @@ public class MainApp {
 
         message.start();
 
-        Application.launch(ViewApp.class);
+        Application.launch(UserViewApp.class);
 
         message.stop();
 
