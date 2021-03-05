@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="311.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettleController">
+   <children>
+      <Text layoutX="52.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="营业额：">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textFieldSettle" layoutX="140.0" layoutY="43.0" prefHeight="38.0" prefWidth="184.0" />
+      <Button fx:id="buttonSettle" layoutX="147.0" layoutY="240.0" mnemonicParsing="false" onAction="#EventbuttonSettleClick" prefHeight="38.0" prefWidth="96.0" text="计算">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Text layoutX="53.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="租   金：">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textFieldFee" layoutX="140.0" layoutY="103.0" prefHeight="38.0" prefWidth="184.0" />
+      <Text layoutX="53.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="收   益：">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textFieldEarn" layoutX="140.0" layoutY="159.0" prefHeight="38.0" prefWidth="184.0" />
+   </children>
+</AnchorPane>

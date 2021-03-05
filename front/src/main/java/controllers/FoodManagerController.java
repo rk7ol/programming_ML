@@ -2,69 +2,34 @@ package controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
 import modules.Food;
 import modules.Foods;
 import send.Dispatcher;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.LinkedList;
 import java.util.List;
 
-
-public class RegisterWindowController {
+public class FoodManagerController {
+    @FXML
+    private FlowPane flowpane;
 
     @FXML
-    private FlowPane foodsPane;
+    private Button buttonAsk;
 
     @FXML
-    private Button buttonShowAllFood;
+    private Button buttonDelete;
 
-    @FXML
-    private Button buttonCancel;
-
-    @FXML
-    private TextField WindowID;
-
-    @FXML
-    private Button buttonConfirmRegist;
     List<MyChoiceBox> list = new LinkedList<>();
-    private StartController startController;
-    private Scene scene0;
-    private Stage stage;
 
-    public void receiveController(StartController startController){
-        this.startController = startController;
-    }
-
-    public void receiveScene(Scene scene0,Stage stage){
-        this.scene0 = scene0;
-        this.stage = stage;
-    }
-
-
-    /*private static class MyChoiceBox extends CheckBox{
-        private Food food;
-
-        public MyChoiceBox(Food food){
-            this.food = food;
-            setText(food.getName());
-        }
-
-        public Food getFood(){
-            return food;
-        }
-    }*/
-
-    private void setWindowID(String id){
-        WindowID.setText(id);
-    }
     @FXML
-    public void eventShowAllFoodClick()
+    private void EventbuttonAskClick()
     {
         new Thread(new Runnable() {
             @Override
@@ -75,13 +40,13 @@ public class RegisterWindowController {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                foodsPane.getChildren().clear();
+                                flowpane.getChildren().clear();
                                 list.clear();
                                 List<Food> foods = result.getContent();
                                 //Food food = new Food("dawd", "dwa", 4);
                                 for(int rank = 0;rank < foods.size();rank++){
                                     MyChoiceBox choiceBox = new MyChoiceBox(foods.get(rank));
-                                    foodsPane.getChildren().add(choiceBox);
+                                    flowpane.getChildren().add(choiceBox);
                                     list.add(choiceBox);
                                 }
                             }
@@ -94,9 +59,9 @@ public class RegisterWindowController {
     }
 
     @FXML
-    //该按钮用于在所有菜品都选择完成之后，进行卡机的注册操作
-    private void eventButtonConfirmRegistClick(){
-        List<Food> foodlist = new LinkedList<>();
+    private void EventbuttonDeleteClick()
+    {
+        /*List<Food> foodlist = new LinkedList<>();
         for(MyChoiceBox box:list){
             if(box.isSelected()){
                 foodlist.add(box.getFood());
@@ -106,27 +71,29 @@ public class RegisterWindowController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Dispatcher.sendRegisterWindowRequest(new Dispatcher.Callback<String>() {
+                Dispatcher.sendDeleteFoodRequest(new Dispatcher.Callback<Boolean>() {
                     @Override
-                    public void call(String result) {
+                    public void call(Boolean result) {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                setWindowID(result);
-                                startController.setTextfieldID(result);
-                                stage.setScene(scene0);
+                                Alert alert;
+                                if (result) {
+                                    alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setContentText("菜品删除成功");
+
+                                } else {
+                                    alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setContentText("菜品删除失败");
+                                }
+
+                                alert.show();
                             }
                         });
                     }
                 }, foods);
             }
-        }).start();
-    }
-
-    @FXML
-    private void eventButtonCancelClick()
-    {
-        stage.setScene(scene0);
+        }).start();*/
     }
 
 }

@@ -18,7 +18,6 @@ public class StartController {
     Stage stage;
     AnchorPane page0;
     AnchorPane page1;
-    AnchorPane page2;
     AnchorPane page4;
     AnchorPane page5;
 
@@ -48,12 +47,10 @@ public class StartController {
 
     public void receivePage(AnchorPane page0,
                             AnchorPane page1,
-                            AnchorPane page2,
                             AnchorPane page4,
                             AnchorPane page5){
         this.page0 = page0;
         this.page1 = page1;
-        this.page2 = page2;
         this.page4 = page4;
         this.page5 = page5;
     }
@@ -84,11 +81,9 @@ public class StartController {
         stage.setScene(scene);
         //navigateController.addPage("卡机id登录", page0);
         navigateController.addPage("选择添加菜品", page1);
-        navigateController.addPage("注册新菜品", page2);
         //controller.addPage("注册新卡机", page3);
-        navigateController.addPage("SellFood", page4);
+        navigateController.addPage("视频售卖", page4);
         navigateController.addPage("营业额结算", page5);
-
     }
 
     @FXML

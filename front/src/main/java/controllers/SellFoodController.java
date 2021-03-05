@@ -46,11 +46,16 @@ public class SellFoodController {
         }
     }*/
 
-   List<MyChoiceBox> list = new LinkedList<>();
+   List<MyChoiceBox> list;
     @FXML
     private void buttonRefeshFoodAction()
     {
-        ///////////////
+        if(StartController.ID == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("请登录！");
+            alert.show();
+        }
         Dispatcher.sendShowWindowFoodsRequest(new Dispatcher.Callback<Foods>() {
             @Override
             public void call(Foods result) {

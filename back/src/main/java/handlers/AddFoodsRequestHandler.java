@@ -19,7 +19,7 @@ public class AddFoodsRequestHandler extends MessageHandler<AddFoodsRequest> {
         try {
             KC_Table kc_table = new KC_Table();
             for (int i = 0; i < foodList.size(); i++) {
-                KC_OV kc_ov = new KC_OV(message.getID(), foodList.get(i).getID());
+                KC_OV kc_ov = new KC_OV(foodList.get(i).getID(), message.getID());
                 flag = kc_table.insert(kc_ov);
                 if (flag == false) break;
             }

@@ -11,6 +11,10 @@ import send.Dispatcher;
 public class SettleController {
     @FXML
     private TextField textFieldSettle;
+    @FXML
+    private TextField textFieldFee;
+    @FXML
+    private TextField textFieldEarn;
     //显示营业额
     @FXML
     private Button buttonSettle;
@@ -34,6 +38,8 @@ public class SettleController {
                             @Override
                             public void run() {
                                 textFieldSettle.setText(String.valueOf(result));
+                                textFieldFee.setText("100");
+                                textFieldEarn.setText(String.valueOf(result - 100));
                             }
                         });
                     }

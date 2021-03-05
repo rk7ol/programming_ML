@@ -1,11 +1,8 @@
 import javafx.application.Application;
 
 
-public class Starter {
-
-
-
+public class UserStarter {
     public static void main(String[] args) {
-        Application.launch(ViewApp.class);
+        Application.launch(UserViewApp.class);
     }
 }

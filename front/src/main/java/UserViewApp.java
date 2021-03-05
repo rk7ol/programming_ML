@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ViewApp extends Application {
+public class UserViewApp extends Application {
 
     Scene scene0;//输入卡机，弹出窗口 //Start.fxml
     Scene scene1;//显示菜品，并且能添加菜品 //AddFoods.fxml
@@ -23,7 +23,7 @@ public class ViewApp extends Application {
 
         stage.setResizable(false);
 
-        FXMLLoader loader = new FXMLLoader(Starter.class.getResource("views/Navigate.fxml"));
+        FXMLLoader loader = new FXMLLoader(UserStarter.class.getResource("userView/Navigate.fxml"));
         AnchorPane navigate = loader.load();
         Scene scene = new Scene(navigate);
 
@@ -33,37 +33,37 @@ public class ViewApp extends Application {
         stage.setScene(scene);*/
 
 
-        FXMLLoader loader0 = new FXMLLoader(Starter.class.getResource("views/Start.fxml"));
+        FXMLLoader loader0 = new FXMLLoader(UserStarter.class.getResource("userView/Start.fxml"));
         AnchorPane page0 = loader0.load();
         scene0 = new Scene(page0);//开始界面
         StartController startController = loader0.getController();
 
-        FXMLLoader loader1 = new FXMLLoader(Starter.class.getResource("views/AddFoods.fxml"));
+        FXMLLoader loader1 = new FXMLLoader(UserStarter.class.getResource("userView/AddFoods.fxml"));
         AnchorPane page1 = loader1.load();
         scene1 = new Scene(page1);//显示菜品，添加菜品
 
 
-        FXMLLoader loader2 = new FXMLLoader(Starter.class.getResource("views/RegisterFood.fxml"));
+        /*FXMLLoader loader2 = new FXMLLoader(UserStarter.class.getResource("userView/RegisterFood.fxml"));
         AnchorPane page2 = loader2.load();
         scene2 = new Scene(page2);//注册菜品
-        RegisterFoodController registerFoodController = loader2.getController();
+        RegisterFoodController registerFoodController = loader2.getController();*/
 
-        FXMLLoader loader3 = new FXMLLoader(Starter.class.getResource("views/RegisterWindow.fxml"));
+        FXMLLoader loader3 = new FXMLLoader(UserStarter.class.getResource("userView/RegisterWindow.fxml"));
         AnchorPane page3 = loader3.load();
         scene3 = new Scene(page3);//注册卡机id
         RegisterWindowController registerWindowController = loader3.getController();
 
-        FXMLLoader loader4 = new FXMLLoader(Starter.class.getResource("views/SellFood.fxml"));
+        FXMLLoader loader4 = new FXMLLoader(UserStarter.class.getResource("userView/SellFood.fxml"));
         AnchorPane page4 = loader4.load();
         scene6 = new Scene(page4);//交易页面
 
-        FXMLLoader loader5 = new FXMLLoader(Starter.class.getResource("views/Settle.fxml"));
+        FXMLLoader loader5 = new FXMLLoader(UserStarter.class.getResource("userView/Settle.fxml"));
         AnchorPane page5 = loader5.load();
         scene5 = new Scene(page5);//营业额
 
 
         startController.receiveScene(scene,scene0,scene3,stage);
-        startController.receivePage(page0,page1,page2,page4,page5);
+        startController.receivePage(page0,page1,page4,page5);
         startController.receiveController(startController,navigateController,registerWindowController);
 
         /*navigateController.addPage("卡机id登录", page0);
