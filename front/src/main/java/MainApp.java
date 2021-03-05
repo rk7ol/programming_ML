@@ -25,5 +25,7 @@ public class MainApp {
 
         Application.launch(ViewApp.class);
 
+        message.stop();
+
     }
 }
