@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -76,14 +77,19 @@ public class SellFoodController {
             }
         }
         Food[] foods = foodlist.toArray(new Food[0]);
-        ////////////
-        String id = "";
+        //验证ID是否为空
+        if(StartController.ID == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("请先登录！");
+            return;
+        }
         Dispatcher.sendSellFoodRequest(new Dispatcher.Callback<Double>() {
             @Override
             public void call(Double result) {
                 money.setText(String.valueOf(result));
             }
-        },id,foods);
+        },StartController.ID,foods);
         status.setText("正在交易......");
 
     }

@@ -1,6 +1,7 @@
 package controllers;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -39,47 +40,47 @@ public class RegisterFoodController {
     private void register3() {
     }*/
 
-    private void setText(){
+    private void setText() {
         textfield3.setText("dwa");
     }
+
     @FXML
     //注册菜品按钮
-    private void EventRegistercClick()
-    {
-        System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
+    private void EventRegistercClick() {
+        //System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
 
-        Dispatcher.sendShowAllFoodsRequest(new Dispatcher.Callback<Foods>() {
+
+        new Thread(new Runnable() {
             @Override
-            public void call(Foods result) {
-                List<Food> foods = result.getContent();
+            public void run() {
+                Dispatcher.sendRegisterFoodRequest(new Dispatcher.Callback<Boolean>() {
+                    @Override
+                    public void call(Boolean result) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                Alert alert;
+                                if (result) {
+                                    alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setContentText("菜品注册成功");
 
+                                } else {
+                                    alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setContentText("菜品注册失败");
+                                }
+
+                                alert.show();
+                            }
+                        });
+                    }
+                }, textfield1.getText(), textfield2.getText(), textfield3.getText());
 
             }
-        });
-
-
-        Dispatcher.sendRegisterFoodRequest(new Dispatcher.Callback<Boolean>() {
-            @Override
-            public void call(Boolean result) {
-
-                Alert alert;
-                if (result){
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("菜品注册成功");
-
-                }else {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("菜品注册失败");
-                }
-
-                alert.show();
-
-            }
-        }, textfield1.getText(), textfield2.getText(), textfield3.getText());
+        }).start();
     }
+
     @FXML
-    private void eventCancelClick()
-    {
+    private void eventCancelClick() {
         textfield1.setText("");
         textfield2.setText("");
         textfield3.setText("");

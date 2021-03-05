@@ -13,7 +13,7 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="result" layoutX="140.0" layoutY="78.0" prefHeight="38.0" prefWidth="184.0" />
+      <TextField fx:id="textFieldSettle" layoutX="140.0" layoutY="78.0" prefHeight="38.0" prefWidth="184.0" />
       <Button fx:id="buttonSettle" layoutX="147.0" layoutY="169.0" mnemonicParsing="false" onAction="#EventbuttonSettleClick" prefHeight="38.0" prefWidth="96.0" text="计算">
          <font>
             <Font size="20.0" />

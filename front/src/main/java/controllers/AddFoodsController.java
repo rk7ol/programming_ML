@@ -2,6 +2,7 @@ package controllers;
 
 //import controllers.Food;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -30,11 +31,6 @@ public class AddFoodsController {
     private TextField textfieldprice;
 
     Food currentfood = null;
-    //发送请求获取本机菜品
-    public AddFoodsController() {
-        //String id = "";
-        //send.sendShowAllWindowFoodsRequest(id);
-    }
 
     private void setComboBox(List<Food> foods){
         //foodlist = foods;
@@ -42,19 +38,32 @@ public class AddFoodsController {
             combobox.getItems().add(foods.get(rank));
         }
     }
+
+
     @FXML
     //确认所选择菜品
     private void eventButtonShowFoodClick()
     {
         //将已选择的菜品信息进行发送
-        Dispatcher.sendShowAllFoodsRequest(new Dispatcher.Callback<Foods>() {
+        new Thread(new Runnable() {
             @Override
-            public void call(Foods result) {
-                //foodsPane.getChildren().clear();
-                List<Food> foods = result.getContent();
-                setComboBox(foods);
+            public void run() {
+                Dispatcher.sendShowAllFoodsRequest(new Dispatcher.Callback<Foods>() {
+                    @Override
+                    public void call(Foods result) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                //foodsPane.getChildren().clear();
+                                List<Food> foods = result.getContent();
+                                setComboBox(foods);
+                            }
+                        });
+                    }
+                });
             }
-        });
+        }).start();
+
         //弹出交易页面scene6
     }
     @FXML
@@ -69,42 +78,38 @@ public class AddFoodsController {
     //添加菜品按钮
     private void eventbuttonConfirmAddclick()
     {
-        //////////////////////////
-        String id = "";
-        /*System.out.println(textfield1.getText()+textfield2.getText()+textfield3.getText());
-        Dispatcher.sendRegisterFoodRequest(new Dispatcher.Callback<Boolean>() {
+        //验证ID是否为空
+        if(StartController.ID == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("请先登录！");
+            return;
+        }
+        new Thread(new Runnable() {
             @Override
-            public void call(Boolean result) {
-                Alert alert;
-                if (result){
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("菜品添加成功");
+            public void run() {
+                Dispatcher.sendAddFoodsRequest(new Dispatcher.Callback<Boolean>() {
+                    @Override
+                    public void call(Boolean result) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                Alert alert;
+                                if (result){
+                                    alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setContentText("菜品添加成功");
 
-                }else {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("菜品添加失败");
-                }
-
-                alert.show();
+                                }else {
+                                    alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setContentText("菜品添加失败");
+                                }
+                                alert.show();
+                            }
+                        });
+                    }
+                },StartController.ID,currentfood);
             }
-        },textfield1.getText(), textfield2.getText(), textfield3.getText());*/
-        Dispatcher.sendAddFoodsRequest(new Dispatcher.Callback<Boolean>() {
-            @Override
-            public void call(Boolean result) {
-                Alert alert;
-                if (result){
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("菜品添加成功");
-
-                }else {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("菜品添加失败");
-                }
-
-                alert.show();
-            }
-        },id,currentfood);
-
+        }).start();
     }
 }
 
