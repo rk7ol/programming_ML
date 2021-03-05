@@ -2,6 +2,7 @@ import modules.Food;
 import modules.Message;
 import modules.request.AddFoodsRequest;
 import modules.response.AddFoodsResponse;
+import modules.response.DeleteFoodsResponse;
 import utils.kafka.MessageReceiver;
 import utils.kafka.MessageSender;
 
@@ -73,10 +74,14 @@ public class AvroTest {
 
         //addFoodsRequestMessageTester.test();
 
-       // MessageTester<AddFoodsResponse> addFoodsResponseMessageTester = new MessageTester<>(new AddFoodsResponse(true));
+        MessageTester<AddFoodsResponse> addFoodsResponseMessageTester = new MessageTester<>(new AddFoodsResponse("123", true));
 
-       // addFoodsResponseMessageTester.test();
+        addFoodsResponseMessageTester.test();
 
+
+//         MessageTester<DeleteFoodsResponse> addFoodsResponseMessageTester = new MessageTester<>(new DeleteFoodsResponse("123", true));
+//
+//         addFoodsResponseMessageTester.test();
 
     }
 

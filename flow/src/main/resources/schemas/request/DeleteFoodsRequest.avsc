@@ -1,0 +1,62 @@
+{
+  "type": "record",
+  "name": "DeleteFoodsRequest",
+  "fields": [
+    {
+      "name": "session",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "requestValue",
+        "symbols": [
+          "DELETE_FOODS_REQUEST"
+        ]
+      }
+    },
+    {
+      "name": "foods",
+      "type": {
+        "name": "FoodsRecord",
+        "type": "record",
+        "fields": [
+          {
+            "name": "FoodArray",
+            "type": {
+              "type": "array",
+              "items": [
+                {
+                  "name": "food",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "ID",
+                      "type": ["null", "string"]
+                    },
+                    {
+                      "name": "name",
+                      "type": "string"
+                    },
+                    {
+                      "name": "price",
+                      "type": "double"
+                    },
+                    {
+                      "name": "method",
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
