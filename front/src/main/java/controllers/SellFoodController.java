@@ -52,6 +52,7 @@ public class SellFoodController {
     private void buttonRefeshFoodAction()
     {
         money.setText("");
+        status.setText("");
         if(StartController.ID == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);

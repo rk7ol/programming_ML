@@ -31,7 +31,7 @@
             <Font size="15.0" />
          </font></Button>
       <FlowPane fx:id="foodsPane" layoutX="41.0" layoutY="108.0" prefHeight="170.0" prefWidth="482.0" />
-      <Text fx:id="status" layoutX="247.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="62.64019775390625">
+      <Text fx:id="status" layoutX="218.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="127.44024658203125">
          <font>
             <Font size="20.0" />
          </font>
