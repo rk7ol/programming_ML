@@ -10,6 +10,8 @@ public class ManagerMainApp {
 
         MessageManager<Response> message = new MessageManager<>();
 
+        message.addHandler(DeleteFoodsResponse.class,new DeleteFoodsResponseHandler());
+        //message.addHandler();
         //message.addHandler(RegisterFoodResponse.class, new RegisterFoodResponseHandler());
         //message.addHandler(AddFoodsResponse.class, new AddFoodsResponseHandler());
         //message.addHandler(RegisterWindowResponse.class, new RegisterWindowResponseHandler());
