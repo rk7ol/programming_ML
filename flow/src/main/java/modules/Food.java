@@ -102,10 +102,7 @@ public class Food extends AvroUnit implements Serializable {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return "<" + getName() + ">(" + getPrice() + "元)";
     }
 
 

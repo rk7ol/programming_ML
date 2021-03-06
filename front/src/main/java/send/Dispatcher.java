@@ -208,7 +208,7 @@ public class Dispatcher {
     //注册卡机
     public static void sendRegisterWindowRequest(Callback<String> callback, Food... foods) {
 
-        RequestSender<String> sender = (RequestSender<String>) getRequestSender(RegisterFoodRequest.class);
+        RequestSender<String> sender = (RequestSender<String>) getRequestSender(RegisterWindowRequest.class);
 
         StringSession session = new StringSession();
 

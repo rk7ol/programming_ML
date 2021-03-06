@@ -10,6 +10,8 @@ import modules.Food;
 import modules.request.SellFoodRequest;
 import modules.response.SellFoodResponse;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static handlers.RegisterWindowRequestHandler.getUUID32;
@@ -31,7 +33,10 @@ public class SellFoodRequestHandler extends MessageHandler<SellFoodRequest> {
                 }
             }
             MessageManager.sendMessage(new SellFoodResponse(message.getSession(),totalPrice));
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            String Time=df.format(new Date()).toString();
             LS_OV ls_ov=new LS_OV();
+            ls_ov.setTime(Time);
             ls_ov.setID(getUUID32());
             ls_ov.setC_ID(message.getID());
             ls_ov.setPrice(totalPrice);

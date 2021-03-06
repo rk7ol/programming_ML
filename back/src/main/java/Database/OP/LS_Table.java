@@ -34,7 +34,7 @@ public class LS_Table implements DB<LS_OV> {
         stmt = conn.createStatement();
         String sql;
         int rs;
-        sql = "INSERT INTO `流水表` (`流水ID`, `卡机ID`, `总售价`, `时间`) VALUES (\'" + Table_OV.getID() + "\',\'" + Table_OV.getC_ID() + "\',\'" + Table_OV.getPrice() + "\'"+",\'" + Table_OV.getTime()+"\';";
+        sql = "INSERT INTO `流水表` (`流水ID`, `卡机ID`, `总售价`, `时间`) VALUES (\'" + Table_OV.getID() + "\',\'" + Table_OV.getC_ID() + "\',\'" + Table_OV.getPrice() + "\'"+",\'" + Table_OV.getTime()+"\');";
         try {
             rs = stmt.executeUpdate(sql);
         } catch (Exception e) {//插入失败时

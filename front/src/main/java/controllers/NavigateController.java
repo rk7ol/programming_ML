@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -23,6 +24,9 @@ public class NavigateController {
 
     @FXML
     private AnchorPane mainPane;
+
+    @FXML
+    private MenuBar menuBar;
 
 
     private Stage mainStage;
@@ -49,8 +53,8 @@ public class NavigateController {
     private Button createNavigateButton(String name, Pane pane) {
         Button button = new Button(name);
 
-        button.setPrefWidth(80);
-        button.setPrefHeight(20);
+        button.setPrefWidth(150);
+        button.setPrefHeight(button.getPrefWidth()/4);
 
 
         button.setOnAction(new EventHandler<ActionEvent>() {
@@ -88,7 +92,7 @@ public class NavigateController {
             @Override
             public void run() {
                 mainStage.setWidth(pane.getPrefWidth() + pageBox.getWidth());
-                mainStage.setHeight(Double.max(pane.getPrefWidth(), pageBox.getPrefWidth()));
+                mainStage.setHeight(Double.max(pane.getPrefWidth(), pageBox.getPrefWidth()) + menuBar.getHeight());
             }
         });
     }
