@@ -20,7 +20,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="money" layoutX="157.0" layoutY="304.0" prefHeight="37.0" prefWidth="242.0" />
+      <TextField fx:id="money" editable="false" layoutX="157.0" layoutY="304.0" prefHeight="37.0" prefWidth="242.0" />
       <Text layoutX="41.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选择菜品">
          <font>
             <Font size="20.0" />
