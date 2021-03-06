@@ -29,13 +29,13 @@
          <font>
             <Font size="20.0" />
          </font></Text>
-      <TextField fx:id="textfieldfoodname" layoutX="167.0" layoutY="212.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="textfieldfoodname" editable="false" layoutX="167.0" layoutY="212.0" prefHeight="36.0" prefWidth="255.0" />
       <Accordion layoutX="2.0" />
       <Text layoutX="62.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="菜品名称：" />
       <Text layoutX="62.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="销售方式：" />
       <Text layoutX="62.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="价格：" />
-      <TextField fx:id="textfieldmethod" layoutX="167.0" layoutY="271.0" prefHeight="36.0" prefWidth="255.0" />
-      <TextField fx:id="textfieldprice" layoutX="167.0" layoutY="326.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="textfieldmethod" editable="false" layoutX="167.0" layoutY="271.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="textfieldprice" editable="false" layoutX="167.0" layoutY="326.0" prefHeight="36.0" prefWidth="255.0" />
       <Text layoutX="60.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选择菜品" wrappingWidth="150.3603515625">
          <font>
             <Font size="20.0" />
