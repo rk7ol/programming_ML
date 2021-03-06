@@ -61,7 +61,7 @@ public class FoodManagerController {
     @FXML
     private void EventbuttonDeleteClick()
     {
-        /*List<Food> foodlist = new LinkedList<>();
+        List<Food> foodlist = new LinkedList<>();
         for(MyChoiceBox box:list){
             if(box.isSelected()){
                 foodlist.add(box.getFood());
@@ -71,7 +71,7 @@ public class FoodManagerController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Dispatcher.sendDeleteFoodRequest(new Dispatcher.Callback<Boolean>() {
+                Dispatcher.sendDeleteFoodsRequest(new Dispatcher.Callback<Boolean>() {
                     @Override
                     public void call(Boolean result) {
                         Platform.runLater(new Runnable() {
@@ -93,7 +93,7 @@ public class FoodManagerController {
                     }
                 }, foods);
             }
-        }).start();*/
+        }).start();
     }
 
 }

@@ -3,10 +3,7 @@ package controllers;
 import javafx.fxml.FXML;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import modules.Food;
 import modules.Foods;
@@ -23,7 +20,7 @@ public class LoginController {
     private TextField textfieldID;
 
     @FXML
-    private TextField textfieldpassword;
+    private PasswordField textfieldpassword;
 
     @FXML
     private Button buttonLogin;

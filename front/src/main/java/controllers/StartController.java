@@ -82,7 +82,7 @@ public class StartController {
         //navigateController.addPage("卡机id登录", page0);
         navigateController.addPage("选择添加菜品", page1);
         //controller.addPage("注册新卡机", page3);
-        navigateController.addPage("视频售卖", page4);
+        navigateController.addPage("食品售卖", page4);
         navigateController.addPage("营业额结算", page5);
     }
 

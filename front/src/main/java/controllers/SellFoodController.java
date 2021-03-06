@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -46,7 +47,7 @@ public class SellFoodController {
         }
     }*/
 
-   List<MyChoiceBox> list;
+   List<MyChoiceBox> list = new LinkedList<>();
     @FXML
     private void buttonRefeshFoodAction()
     {
@@ -88,13 +89,26 @@ public class SellFoodController {
             alert.setContentText("请先登录！");
             return;
         }
-        Dispatcher.sendSellFoodRequest(new Dispatcher.Callback<Double>() {
+        new Thread(new Runnable() {
             @Override
-            public void call(Double result) {
-                money.setText(String.valueOf(result));
+            public void run() {
+                Dispatcher.sendSellFoodRequest(new Dispatcher.Callback<Double>() {
+                    @Override
+                    public void call(Double result) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                money.setText(String.valueOf(result));
+                                status.setText("交易成功！");
+                            }
+                        });
+
+                    }
+                },StartController.ID,foods);
+
             }
-        },StartController.ID,foods);
-        status.setText("正在交易......");
+        }).start();
+
 
     }
 

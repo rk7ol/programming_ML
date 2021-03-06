@@ -21,11 +21,6 @@
          </font>
       </Text>
       <TextField fx:id="money" layoutX="157.0" layoutY="304.0" prefHeight="37.0" prefWidth="242.0" />
-      <Text fx:id="text1" layoutX="217.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
       <Text layoutX="41.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选择菜品">
          <font>
             <Font size="20.0" />
@@ -36,5 +31,10 @@
             <Font size="15.0" />
          </font></Button>
       <FlowPane fx:id="foodsPane" layoutX="41.0" layoutY="108.0" prefHeight="170.0" prefWidth="482.0" />
+      <Text fx:id="status" layoutX="247.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="62.64019775390625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
