@@ -78,7 +78,7 @@ public class KC_Table implements DB<KC_OV> {
         // 执行查询
         stmt = conn.createStatement();
         String sql;
-        sql = "DELETE FROM `卡机-菜品表` WHERE `卡机-菜品表`.`卡机ID` = \'" + Table_OV.getK_ID() + "\' AND `卡机-菜品表`.`菜品ID` = \'" + Table_OV.getC_ID() + "\';";
+        sql = "DELETE FROM `卡机-菜品表` WHERE  `卡机-菜品表`.`菜品ID` = \'" + Table_OV.getC_ID() + "\';";
         int rs;
         try {
             rs = stmt.executeUpdate(sql);
