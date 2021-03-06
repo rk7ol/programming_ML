@@ -86,12 +86,30 @@ public class FoodManagerController {
                                     alert = new Alert(Alert.AlertType.ERROR);
                                     alert.setContentText("菜品删除失败");
                                 }
-
                                 alert.show();
                             }
                         });
                     }
                 }, foods);
+                Dispatcher.sendShowAllFoodsRequest(new Dispatcher.Callback<Foods>() {
+                    @Override
+                    public void call(Foods result) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                flowpane.getChildren().clear();
+                                list.clear();
+                                List<Food> foods = result.getContent();
+                                //Food food = new Food("dawd", "dwa", 4);
+                                for(int rank = 0;rank < foods.size();rank++){
+                                    MyChoiceBox choiceBox = new MyChoiceBox(foods.get(rank));
+                                    flowpane.getChildren().add(choiceBox);
+                                    list.add(choiceBox);
+                                }
+                            }
+                        });
+                    }
+                });
             }
         }).start();
     }
