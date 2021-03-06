@@ -44,7 +44,7 @@ public class LoginController {
         String ID = textfieldID.getText();
         String password = textfieldpassword.getText();
 
-        if(ID.equals("administrator")&&password.equals("888888")){
+        if(ID.equals("adm")&&password.equals("888888")){
 
             navigateController.setMainStage(stage);
             stage.setScene(scene);
