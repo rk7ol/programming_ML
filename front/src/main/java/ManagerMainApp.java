@@ -11,6 +11,8 @@ public class ManagerMainApp {
         MessageManager<Response> message = new MessageManager<>();
 
         message.addHandler(DeleteFoodsResponse.class,new DeleteFoodsResponseHandler());
+        message.addHandler(RegisterFoodResponse.class,new RegisterFoodResponseHandler());
+        message.addHandler(ShowAllFoodsResponse.class,new ShowAllFoodsResponseHandler());
         //message.addHandler();
         //message.addHandler(RegisterFoodResponse.class, new RegisterFoodResponseHandler());
         //message.addHandler(AddFoodsResponse.class, new AddFoodsResponseHandler());

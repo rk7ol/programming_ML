@@ -10,7 +10,7 @@ public class UserMainApp {
 
         MessageManager<Response> message = new MessageManager<>();
 
-        message.addHandler(RegisterFoodResponse.class, new RegisterFoodResponseHandler());
+        //message.addHandler(RegisterFoodResponse.class, new RegisterFoodResponseHandler());
         message.addHandler(AddFoodsResponse.class, new AddFoodsResponseHandler());
         message.addHandler(RegisterWindowResponse.class, new RegisterWindowResponseHandler());
         message.addHandler(SellFoodResponse.class, new SellFoodResponseHandler());
