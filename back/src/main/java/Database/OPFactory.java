@@ -6,7 +6,7 @@ import Database.OP.KJ_Table;
 import Database.OP.LS_Table;
 
 public class OPFactory {
-    DB createTable(String tableName) throws Exception{
+    public DB createTable(String tableName) throws Exception{
         switch(tableName){
             case "CP_Table":
                 return new CP_Table();
