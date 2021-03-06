@@ -59,20 +59,31 @@ public class SellFoodController {
             alert.setContentText("请登录！");
             alert.show();
         }
-        Dispatcher.sendShowWindowFoodsRequest(new Dispatcher.Callback<Foods>() {
+        new Thread(new Runnable() {
             @Override
-            public void call(Foods result) {
-                foodsPane.getChildren().clear();
-                list.clear();
-                List<Food> foods = result.getContent();
-                //Food food = new Food("dawd", "dwa", 4);
-                for(int rank = 0;rank < foods.size();rank++){
-                    MyChoiceBox choiceBox = new MyChoiceBox(foods.get(rank));
-                    foodsPane.getChildren().add(choiceBox);
-                    list.add(choiceBox);
-                }
+            public void run() {
+                Dispatcher.sendShowWindowFoodsRequest(new Dispatcher.Callback<Foods>() {
+                    @Override
+                    public void call(Foods result) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                foodsPane.getChildren().clear();
+                                list.clear();
+                                List<Food> foods = result.getContent();
+                                //Food food = new Food("dawd", "dwa", 4);
+                                for(int rank = 0;rank < foods.size();rank++){
+                                    MyChoiceBox choiceBox = new MyChoiceBox(foods.get(rank));
+                                    foodsPane.getChildren().add(choiceBox);
+                                    list.add(choiceBox);
+                                }
+                            }
+                        });
+                    }
+                },StartController.ID);
             }
-        },StartController.ID);
+        }).start();
+
     }
 
     @FXML
@@ -102,6 +113,9 @@ public class SellFoodController {
                             @Override
                             public void run() {
                                 money.setText(String.valueOf(result));
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setContentText("交易成功："+String.valueOf(result)+"元。");
+                                alert.show();
                                 status.setText("交易成功！");
                             }
                         });
