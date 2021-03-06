@@ -39,6 +39,8 @@ public class MainApp {
 
         messageManager.addHandler(ShowWindowFoodsRequest.class,new ShowWindowFoodsRequestHandler());
 
+
+        messageManager.addHandler(DeleteFoodsRequest.class,new DeleteFoodsRequestHandler());
         messageManager.start();
 
     }
