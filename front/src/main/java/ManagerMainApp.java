@@ -22,7 +22,7 @@ public class ManagerMainApp {
 
         message.start();
 
-        Application.launch(UserViewApp.class);
+        Application.launch(ManagerViewApp.class);
 
     }
 }

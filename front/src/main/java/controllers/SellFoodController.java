@@ -107,7 +107,6 @@ public class SellFoodController {
 
                     }
                 },StartController.ID,foods);
-
             }
         }).start();
     }
