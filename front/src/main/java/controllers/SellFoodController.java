@@ -51,6 +51,7 @@ public class SellFoodController {
     @FXML
     private void buttonRefeshFoodAction()
     {
+        money.setText("");
         if(StartController.ID == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -61,6 +62,7 @@ public class SellFoodController {
             @Override
             public void call(Foods result) {
                 foodsPane.getChildren().clear();
+                list.clear();
                 List<Food> foods = result.getContent();
                 //Food food = new Food("dawd", "dwa", 4);
                 for(int rank = 0;rank < foods.size();rank++){
@@ -105,11 +107,8 @@ public class SellFoodController {
 
                     }
                 },StartController.ID,foods);
-
             }
         }).start();
-
-
     }
 
 }

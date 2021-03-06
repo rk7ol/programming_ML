@@ -35,6 +35,9 @@ public class AddFoodsController {
     private void setComboBox(List<Food> foods){
         //foodlist = foods;
         combobox.getItems().clear();
+        textfieldprice.setText("");
+        textfieldmethod.setText("");
+        textfieldfoodname.setText("");
         for(int rank = 0;rank < foods.size();rank++) {
             combobox.getItems().add(foods.get(rank));
         }
